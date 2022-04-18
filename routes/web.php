@@ -38,3 +38,6 @@ Route::get('/admin/payment-way/delete/{id}', [AdminPaymentController::class, 'pa
 
 //
 Route::get('admin/account-info', [AdminPaymentController::class, 'account_info'])->name('admin-account-info')->middleware('is_admin');
+Route::post('admin/account-info/store', [AdminPaymentController::class, 'account_info_store'])->name('account-info-store')->middleware('is_admin');
+Route::post('admin/account-info/update', [AdminPaymentController::class, 'account_info_update'])->name('account-info-update')->middleware('is_admin');
+Route::get('/admin/account-info/delete/{id}', [AdminPaymentController::class, 'account_info_delete'])->middleware('is_admin');

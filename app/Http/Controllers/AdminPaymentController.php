@@ -90,4 +90,35 @@ class AdminPaymentController extends Controller
     $account_infos= AccountInfo::all();
       return view('admin.pages.account_info',compact('account_infos'));
   }
+  public function account_info_store(Request $request)
+  {
+    $account_info= new AccountInfo();
+    $account_info->payment_way_id= $request->payment_way_id;
+    $account_info->payment_type_id= $request->payment_type_id;
+    $account_info->wallet_no= $request->wallet_no;
+    $account_info->save();
+
+    return back()->with('account_info_added', 'Merchant Gateway Successfully Added!!');
+
+  }
+  public function account_info_update(Request $request)
+  {
+    $account_info= AccountInfo::find($request->id);
+    $account_info->payment_way_id= $request->payment_way_id;
+    $account_info->payment_type_id= $request->payment_type_id;
+    $account_info->wallet_no= $request->wallet_no;
+    $account_info->save();
+
+    return back()->with('account_info_added', 'Merchant Gateway Successfully Updated!!');
+
+  }
+  public function  account_info_delete($id)
+  {
+      //dd($id);
+      $account_info = AccountInfo::find($id);
+      //dd($employee);
+      $account_info->delete();
+
+        return back()->with('account_info_deleted', 'Merchant Gateway Successfully Deleted!!');
+  }
 }

@@ -90,7 +90,7 @@
                <div class="d-grid grid-3-auto gap-card">
                   <div class="dropdown">
                      <button class="btn btn-primary w-100" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
-                        Buy / Sell
+                        Buy
                      </button>
                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
                         <div class="cardbuysell mb-0">
@@ -127,7 +127,7 @@
                   </div>
                   <div class="dropdown">
                      <button class="btn btn-primary w-100" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false">
-                        + Add Crypto
+                      Sell
                      </button>
                      <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton4">
                         <li><a href="#" class="dropdown-item"><img src="{{asset('assets/images/coins/01.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img71"> 561,511 Btc</a></li>
@@ -150,16 +150,12 @@
                   <div class="card shining-card">
                      <div class="card-body">
                         <img src="{{asset('assets/images/coins/01.png')}}" class="img-fluid avatar avatar-50 avatar-rounded" alt="img60">
-                        <span class="fs-5 me-2">BTC/USDT</span>
-                        <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3.86124 21.6224L11.2734 16.8577C11.6095 16.6417 12.041 16.6447 12.3718 16.8655L18.9661 21.2663C19.2968 21.4871 19.7283 21.4901 20.0644 21.2741L27.875 16.2534" stroke="#BFBFBF" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M26.7847 13.3246L31.6677 14.0197L30.4485 18.7565L26.7847 13.3246ZM30.2822 19.4024C30.2823 19.4023 30.2823 19.4021 30.2824 19.402L30.2822 19.4024ZM31.9991 14.0669L31.9995 14.0669L32.0418 13.7699L31.9995 14.0669C31.9994 14.0669 31.9993 14.0669 31.9991 14.0669Z" fill="#BFBFBF" stroke="#BFBFBF"/>
-                        </svg>
+
+
                         <div class="pt-3">
-                           <h4 class="counter" style="visibility: visible;">$34.850,10</h4>
-                           <div class="pt-3">
-                              <small>+ 0.8%</small>
-                           </div>
+                          <span class="fs-5 me-2">CASH WALLET</span>
+                           <h4 class="counter" style="visibility: visible;">$0.00</h4>
+
                         </div>
                      </div>
                   </div>
@@ -168,16 +164,12 @@
                   <div class="card shining-card">
                      <div class="card-body">
                         <img src="{{asset('assets/images/coins/01.png')}}" class="img-fluid avatar avatar-50 avatar-rounded" alt="img60">
-                        <span class="fs-5 me-2">ETH/USDT</span>
-                        <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3.86124 21.6224L11.2734 16.8577C11.6095 16.6417 12.041 16.6447 12.3718 16.8655L18.9661 21.2663C19.2968 21.4871 19.7283 21.4901 20.0644 21.2741L27.875 16.2534" stroke="#BFBFBF" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M26.7847 13.3246L31.6677 14.0197L30.4485 18.7565L26.7847 13.3246ZM30.2822 19.4024C30.2823 19.4023 30.2823 19.4021 30.2824 19.402L30.2822 19.4024ZM31.9991 14.0669L31.9995 14.0669L32.0418 13.7699L31.9995 14.0669C31.9994 14.0669 31.9993 14.0669 31.9991 14.0669Z" fill="#BFBFBF" stroke="#BFBFBF"/>
-                        </svg>
+
+
                         <div class="progress-detail pt-3">
-                           <h4 class="counter" style="visibility: visible;">$2,138.87</h4>
-                           <div class="pt-3">
-                           <small>+ 0.8%</small>
-                           </div>
+                          <span class="fs-5 me-2">TOKEN WALLET</span>
+                           <h4 class="counter" style="visibility: visible;">$0.00</h4>
+
                         </div>
                      </div>
                   </div>
@@ -186,16 +178,13 @@
                   <div class="card shining-card">
                      <div class="card-body">
                         <img src="{{asset('assets/images/coins/01.png')}}" class="img-fluid avatar avatar-50 avatar-rounded" alt="img60">
-                        <span class="fs-5 me-2">LTC/USDT</span>
-                        <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3.86124 21.6224L11.2734 16.8577C11.6095 16.6417 12.041 16.6447 12.3718 16.8655L18.9661 21.2663C19.2968 21.4871 19.7283 21.4901 20.0644 21.2741L27.875 16.2534" stroke="#BFBFBF" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M26.7847 13.3246L31.6677 14.0197L30.4485 18.7565L26.7847 13.3246ZM30.2822 19.4024C30.2823 19.4023 30.2823 19.4021 30.2824 19.402L30.2822 19.4024ZM31.9991 14.0669L31.9995 14.0669L32.0418 13.7699L31.9995 14.0669C31.9994 14.0669 31.9993 14.0669 31.9991 14.0669Z" fill="#BFBFBF" stroke="#BFBFBF"/>
-                        </svg>
+
+
+
                         <div class="progress-detail pt-3">
-                           <h4 class="counter" style="visibility: visible;">$34.850,10</h4>
-                           <div class="pt-3">
-                           <small>+ 0.8%</small>
-                           </div>
+                          <span class="fs-5 me-2">BONUS WALLET</span>
+                           <h4 class="counter" style="visibility: visible;">$0.00</h4>
+
                         </div>
                      </div>
                   </div>
