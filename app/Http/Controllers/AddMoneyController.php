@@ -17,7 +17,7 @@ class AddMoneyController extends Controller
     $user= User::where('id',Auth::id())->first();
     $deposit= AddMoney::where('method','Deposit')->get();
 
-      return view('user.pages.add_money',compact('user'),'deposit');
+      return view('user.pages.add_money',compact('user','deposit');
   }
   public function Store(Request $request)
   {
