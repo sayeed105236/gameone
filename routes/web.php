@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminPaymentController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\AddMoneyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +24,11 @@ Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//user payment
+Route::get('/home/add-fund/{id}', [App\Http\Controllers\AddMoneyController::class, 'index'])->name('add-money');
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::post('/home/get-sponsor', [RegisterController::class,'getSponsor'])->name('get-sponsor');
 
 //payment type route
 Route::get('admin/payment-type', [AdminPaymentController::class, 'payment_type'])->name('admin-payment-type')->middleware('is_admin');
@@ -36,7 +42,7 @@ Route::post('admin/payment-way/store', [AdminPaymentController::class, 'payment_
 Route::post('admin/payment-way/update', [AdminPaymentController::class, 'payment_way_update'])->name('payment-way-update')->middleware('is_admin');
 Route::get('/admin/payment-way/delete/{id}', [AdminPaymentController::class, 'payment_way_delete'])->middleware('is_admin');
 
-//
+//acccount info
 Route::get('admin/account-info', [AdminPaymentController::class, 'account_info'])->name('admin-account-info')->middleware('is_admin');
 Route::post('admin/account-info/store', [AdminPaymentController::class, 'account_info_store'])->name('account-info-store')->middleware('is_admin');
 Route::post('admin/account-info/update', [AdminPaymentController::class, 'account_info_update'])->name('account-info-update')->middleware('is_admin');

@@ -7,7 +7,7 @@
                     <path d="M53.2837 0.5C53.2837 0.223858 53.5075 0 53.7837 0H75.6195C75.8957 0 76.1195 0.223858 76.1195 0.5V26.25H53.2837V0.5Z" fill="#FF971D"></path>
                     <path d="M53.2837 123.75H76.1195V149.5C76.1195 149.776 75.8957 150 75.6195 150H53.7837C53.5075 150 53.2837 149.776 53.2837 149.5V123.75Z" fill="#FF971D"></path>
                 </g>
-            </svg>            <h4 class="logo-title m-0">OINEX</h4>
+            </svg>            <h4 class="logo-title m-0">GAMEUM.ONE</h4>
         </a>
         <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
             <i class="icon">
@@ -139,7 +139,7 @@
                   </a>
                   <ul class="sub-nav collapse" id="sidebar-payment" data-bs-parent="#sidebar">
                       <li class="nav-item">
-                          <a class="nav-link " href="#">
+                          <a class="nav-link " href="/home/add-fund/{{Auth::user()->id}}">
                               <i class="icon">
                               <svg width="10" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <rect x="0.5" y="1" width="11" height="11" stroke="currentcolor"/>

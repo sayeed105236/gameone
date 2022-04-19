@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -65,11 +66,31 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+      $sponsor =  User::where('user_name','like', $data['sponsor'])->select('id','user_name')->first();
+    //  dd($sponsor->id);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'user_name' => $data['user_name'],
+            'address' => $data['address'],
+            'city' => $data['city'],
+            'postal_code' => $data['postal_code'],
+            'country' => $data['country'],
+            'sponsor' => $sponsor->id,
             'password' => Hash::make($data['password']),
         ]);
+    }
+    public function getSponsor(Request $request)
+    {
+
+        $userName = User::where('user_name','like',$request->search)->select('id','user_name')->first();
+        if ($userName){
+            return response()->json(['success'=>'<span style="color: green;">User found!!</span>','data'=>$userName],200);
+        }else{
+            return response()->json(['success'=>'<span style="color: red;">User not found!!</span>'],200);
+        }
+
     }
 }
