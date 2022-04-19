@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\AccountInfo;
 
 class AddMoney extends Model
 {
     use HasFactory;
     protected $table ="add_money";
+      protected $guarded =[];
     public function user()
     {
 
@@ -22,5 +24,9 @@ class AddMoney extends Model
     public function sender()
     {
         return $this->belongsTo(User::class,'received_from');
+    }
+    public function merchant()
+    {
+        return $this->belongsTo(AccountInfo::class,'wallet_id');
     }
 }

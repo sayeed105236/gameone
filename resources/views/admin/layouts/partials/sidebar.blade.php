@@ -149,7 +149,7 @@
                     </a>
                     <ul class="sub-nav collapse" id="sidebar-fund" data-bs-parent="#sidebar">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{route('deposit-manage')}}">
                                 <i class="icon">
                                     <svg width="10" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect x="0.5" y="1" width="11" height="11" stroke="currentcolor"/>

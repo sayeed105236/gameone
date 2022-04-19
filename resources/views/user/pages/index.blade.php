@@ -154,7 +154,7 @@
 
                         <div class="pt-3">
                           <span class="fs-5 me-2">CASH WALLET</span>
-                           <h4 class="counter" style="visibility: visible;">$0.00</h4>
+                           <h4 class="counter" style="visibility: visible;">{{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</h4>
 
                         </div>
                      </div>

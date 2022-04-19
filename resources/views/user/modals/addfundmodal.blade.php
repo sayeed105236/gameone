@@ -15,8 +15,9 @@
 
                               <div class="card-body">
 
-                              <form method="post" action="#">
+                              <form method="post" action="{{route('money-store')}}">
                                 @csrf
+                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 
                         <div class="mb-3">
 
@@ -27,6 +28,7 @@
                            <label for="email-id-column">Select Merchant Gateway<span
                                    class="text-danger">*</span></label>
                         <select id="DestinationOptions" name="payment_wallet_id" class="form-select" aria-label="Default select example" required>
+                            <option label="Choose Wallet"></option>
                           @foreach($account_info as $payment)
 
                         <option id="{{$payment->wallet_no}}" value="{{$payment->id}}">{{$payment->payment_way->payment_way}} ({{$payment->wallet_no}})</option>
@@ -36,7 +38,7 @@
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Wallet or Account No.</label>
 
-                            <input type="text" disabled id="wallet_id" class="form-control"/>
+                            <input type="text" name="wallet_id" disabled id="wallet_id" class="form-control"required/>
                         </div>
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Transaction ID</label>

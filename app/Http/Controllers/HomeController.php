@@ -23,7 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.pages.index');
+      $data['user']=User::all();
+      $data['deposit']=AddMoney::where('user_id',Auth::id())->first();
+
+      $data['sum_deposit']=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
+        return view('user.pages.index',compact('data'));
     }
     public function adminHome()
     {
