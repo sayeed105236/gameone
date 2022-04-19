@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\USer;
+use App\Models\AddMoney;
+use Auth;
 
 class HomeController extends Controller
 {
