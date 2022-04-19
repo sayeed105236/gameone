@@ -15,7 +15,7 @@ class AddMoneyController extends Controller
   public function index($id)
   {
     $user= User::where('id',Auth::id())->first();
-    $deposit= AddMoney::where('method','Deposit')->get();
+    $deposit= AddMoney::where('method','Deposit')->where('user_id',Auth::id())->get();
 
       return view('user.pages.add_money',compact('user','deposit'));
   }

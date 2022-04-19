@@ -10,7 +10,7 @@ class AdminShowPaymentController extends Controller
 {
   public function Manage()
   {
-    $deposit= AddMoney::where('method','Deposit')->where('user_id',Auth::id())->get();
+    $deposit= AddMoney::where('method','Deposit')->get();
 
     return view('admin.pages.deposit_request_manage',compact('deposit'));
 
