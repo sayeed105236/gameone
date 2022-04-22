@@ -168,7 +168,7 @@
 
                         <div class="progress-detail pt-3">
                           <span class="fs-5 me-2">TOKEN WALLET</span>
-                           <h4 class="counter" style="visibility: visible;">$0.00</h4>
+                           <h4 class="counter" style="visibility: visible;">0.00</h4>
 
                         </div>
                      </div>
@@ -183,7 +183,7 @@
 
                         <div class="progress-detail pt-3">
                           <span class="fs-5 me-2">BONUS WALLET</span>
-                           <h4 class="counter" style="visibility: visible;">$0.00</h4>
+                           <h4 class="counter" style="visibility: visible;">0.00</h4>
 
                         </div>
                      </div>

@@ -6,6 +6,10 @@ use App\Http\Controllers\AdminPaymentController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AddMoneyController;
 use App\Http\Controllers\AdminShowPaymentController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\AffilateController;
+use App\Http\Controllers\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,14 +28,21 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\FrontendController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/home/buy_package/{id}', [App\Http\Controllers\FrontendController::class, 'buy_package'])->middleware('auth');
 
 //user payment
-Route::get('/home/add-fund/{id}', [App\Http\Controllers\AddMoneyController::class, 'index'])->name('add-money');
+Route::get('/home/add-fund/{id}', [App\Http\Controllers\AddMoneyController::class, 'index'])->name('add-money')->middleware('auth');
 Route::post('/user/add-fund/store', [AddMoneyController::class,'Store'])->name('money-store')->middleware('auth');
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::post('/home/get-sponsor', [RegisterController::class,'getSponsor'])->name('get-sponsor');
 
+//user affilate
+Route::get('/home/my-affilate/{id}', [AffilateController::class, 'index'])->name('affilates')->middleware('auth');
+
+
+//general settings
+Route::get('admin/general-settings', [SettingsController::class, 'index'])->name('general-settings')->middleware('is_admin');
 //payment type route
 Route::get('admin/payment-type', [AdminPaymentController::class, 'payment_type'])->name('admin-payment-type')->middleware('is_admin');
 Route::post('admin/payment-type/store', [AdminPaymentController::class, 'payment_type_store'])->name('payment-type-store')->middleware('is_admin');
@@ -54,3 +65,18 @@ Route::get('/admin/account-info/delete/{id}', [AdminPaymentController::class, 'a
 Route::get('/admin/add-money/requests', [AdminShowPaymentController::class,'Manage'])->name('deposit-manage')->middleware('is_admin');
 Route::get('/admin/add-money-approve/{id}', [AdminShowPaymentController::class,'approve'])->middleware('is_admin');
 Route::get('/admin/add-money-reject/{id}/{user_id}/{amount}', [AdminShowPaymentController::class,'rejected'])->middleware('is_admin');
+
+// Settings Update
+Route::post('admin/token-rate/update', [SettingsController::class, 'token_rate_update'])->name('token-rate-update')->middleware('is_admin');
+Route::post('admin/ambassador/update', [SettingsController::class, 'ambassador_update'])->name('ambassador-update')->middleware('is_admin');
+Route::post('admin/transfer-info/update', [SettingsController::class, 'transfer_info_update'])->name('transfer-info-update')->middleware('is_admin');
+Route::post('admin/withdraw-info/update', [SettingsController::class, 'withdraw_info_update'])->name('withdraw-info-update')->middleware('is_admin');
+//all users
+Route::get('admin/user-lists', [HomeController::class, 'user_lists'])->name('admin-user-lists')->middleware('is_admin');
+
+//admin package settings
+
+Route::get('admin/packages', [PackageController::class, 'index'])->name('admin-packages')->middleware('is_admin');
+Route::post('admin/packages/store', [PackageController::class, 'store'])->name('store-package')->middleware('is_admin');
+Route::post('admin/packages/update', [PackageController::class, 'update'])->name('update-package')->middleware('is_admin');
+Route::get('/admin/packages/delete/{id}', [PackageController::class, 'delete'])->middleware('is_admin');

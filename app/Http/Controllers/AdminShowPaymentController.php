@@ -8,6 +8,10 @@ use Auth;
 
 class AdminShowPaymentController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
   public function Manage()
   {
     $deposit= AddMoney::where('method','Deposit')->get();
