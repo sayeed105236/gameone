@@ -3,14 +3,25 @@
 
 @section('user_content')
 
-<div class="container">
-  <h6>Available Amount: {{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</h6>
-  <hr>
-  <h4 class="btn btn-primary">Package List</h4>
-</div>
-<br>
-<br>
-<div class="bd-example">
+                  <div class="container">
+              <h6>Available Amount: {{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</h6>
+              <hr>
+              <h4 class="btn btn-primary">Package List</h4>
+            </div>
+            <br>
+            @if(Session::has('package_purchase'))
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24">
+            <use xlink:href="#check-circle-fill" />
+            </svg>
+            <div>
+            {{Session::get('package_purchase')}}
+            </div>
+            </div>
+            @endif
+            <br>
+            <br>
+            <div class="bd-example">
             <div class="row  row-cols-1 row-cols-md-2 g-4">
               @foreach($data['packages'] as $row)
                 <div class="col-md-4">
@@ -46,7 +57,14 @@
                                   <input disabled type="text" class="form-control" value="{{$row->daily_buyer_token}}" >
                                     </div>
                                     <div class="text-center">
-                                          <a href="#" class="btn btn-primary">Buy Package</a>
+                                      <form id="jquery-val-form" action="{{route('buy-package')}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                        <input type="hidden" name="package_id" value="{{$row->id}}">
+
+
+                                          <button type="submit" class="btn btn-primary">Buy Package</button>
+                                        </form>
                                     </div>
 
                       </div>

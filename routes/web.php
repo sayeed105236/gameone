@@ -30,6 +30,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\FrontendController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/home/buy_package/{id}', [App\Http\Controllers\FrontendController::class, 'buy_package'])->middleware('auth');
+Route::post('/home/buy_package/store', [App\Http\Controllers\FrontendController::class, 'store_package'])->name('buy-package')->middleware('auth');
 
 //user payment
 Route::get('/home/add-fund/{id}', [App\Http\Controllers\AddMoneyController::class, 'index'])->name('add-money')->middleware('auth');
