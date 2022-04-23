@@ -57,7 +57,7 @@ class FrontendController extends Controller
       $deduct->amount = -($package_id->package_price);
       //$deduct->method=$method;
 
-      $deduct->method = 'Purchased Package';
+      $deduct->method = 'Purchased Package' . $package_id->package_name;
       $deduct->type = 'Debit';
       $deduct->status = 'approve';
       $deduct->save();

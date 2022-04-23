@@ -35,16 +35,17 @@
 
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Package Price ($)</label>
-                                    <input type="text" class="form-control" value="{{$row->package_price}}" name="package_price"  id="exampleInputEmail1" aria-describedby="emailHelp" required >
-
-                                </div>
-                                <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Amount (G1)</label>
-                                    <input type="round" class="form-control" value="{{$row->amount}}" name="amount"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="
+                                    <input disabled type="round" class="form-control" value="{{$row->amount}}" name="amount"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="
                               * digit only" required>
 
                                 </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Package Price ($)</label>
+                                    <input disabled type="text" class="form-control" value="{{$row->package_price}}" name="package_price"  id="exampleInputEmail1" aria-describedby="emailHelp" required >
+
+                                </div>
+
 
 
 

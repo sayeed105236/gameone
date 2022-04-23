@@ -27,23 +27,31 @@
                                     <input type="text" class="form-control" name="package_name"  id="exampleInputEmail1" aria-describedby="emailHelp" required>
 
                                 </div>
+                                @php
+                                  $token = App\Models\TokenRate::first();
+                                  //dd($token->token_convert_rate);
+                                @endphp
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Package Quantity</label>
-                                    <input type="number" class="form-control" name="package_qty"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="
+                                    <input type="number"  class="form-control" name="package_qty"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="
                                       * digit only" required>
+
+                                </div>
+
+
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Amount (G1)</label>
+                                    <input type="round" class="form-control" onchange="calculate()" name="amount"  id="amount" aria-describedby="emailHelp" placeholder="
+                              * digit only" required>
 
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Package Price ($)</label>
-                                    <input type="text" class="form-control" name="package_price"  id="exampleInputEmail1" aria-describedby="emailHelp" required >
+                                    <input type="round" disabled class="form-control" name="package_price"  id="price" aria-describedby="emailHelp" required >
 
                                 </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Amount (G1)</label>
-                                    <input type="round" class="form-control" name="amount"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="
-                              * digit only" required>
 
-                                </div>
 
 
 
@@ -87,3 +95,19 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+
+<script>
+function calculate(){
+  //alert('success');
+
+
+  var amount = document.getElementById('amount').value;
+  var value = amount * <?php echo $token->token_convert_rate ?>;
+  console.log(value);
+  document.getElementById('price').value= value;
+}
+
+</script>
+@endpush
