@@ -61,6 +61,14 @@ class FrontendController extends Controller
       $deduct->type = 'Debit';
       $deduct->status = 'approve';
       $deduct->save();
+      $token_bonus = new TokenWallet();
+      $token_bonus->user_id= $request->user_id;
+
+      $token_bonus->amount= $package_id->amount;
+      $token_bonus->method= 'Purchased Package';
+      $token_bonus->type= 'Credit';
+      $token_bonus->description= 'For Purchasing'. ' '. $package_id->package_name;
+      $token_bonus->save();
 
       $bonus = new BonusWallet();
       $bonus->user_id= $sponsor->sponsor;
