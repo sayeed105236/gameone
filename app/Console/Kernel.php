@@ -14,14 +14,13 @@ class Kernel extends ConsoleKernel
      * @return void
      */
      protected $commands = [
-         Commands\DailyBonus::class,
+         //Commands\DailyBonus::class,
 
      ];
     protected function schedule(Schedule $schedule)
     {
-      $schedule->command('bonus:daily')->weekdays()
-          ->dailyAt('13.00');
-      
+      $schedule->command('daily:schedule')->everyMinute();
+
     }
 
     /**
