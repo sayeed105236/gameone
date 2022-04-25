@@ -24,7 +24,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    
+
     public function adminHome()
     {
         return view('admin.pages.index');
@@ -33,5 +33,16 @@ class HomeController extends Controller
     {
       $users= User::all();
       return view('admin.pages.user_lists',compact('users'));
+    }
+    public function getUser(Request $request)
+    {
+
+        $userName = User::where('user_name','like',$request->search)->select('id','user_name')->first();
+        if ($userName){
+            return response()->json(['success'=>'<span style="color: green;">User found!!</span>','data'=>$userName],200);
+        }else{
+            return response()->json(['success'=>'<span style="color: red;">User not found!!</span>'],200);
+        }
+
     }
 }

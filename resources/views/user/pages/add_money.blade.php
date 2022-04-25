@@ -28,7 +28,7 @@
                         <a class="btn btn-primary float-right" href="#" data-bs-toggle="modal" data-bs-target="#addfund">Add Request</a>
                         @include('user.modals.addfundmodal')
                         <hr>
-                        <h6>Available Balance: $0.00</h6>
+                        <h6>Available Balance: {{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</h6>
 
                         <hr>
                         <div class="bd-example table-responsive">

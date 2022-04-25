@@ -16,8 +16,11 @@ class AddMoneyController extends Controller
   {
     $user= User::where('id',Auth::id())->first();
     $deposit= AddMoney::where('method','Deposit')->where('user_id',Auth::id())->get();
+    $data['deposit']=AddMoney::where('user_id',Auth::id())->first();
 
-      return view('user.pages.add_money',compact('user','deposit'));
+    $data['sum_deposit']=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
+
+      return view('user.pages.add_money',compact('user','deposit','data'));
   }
   public function Store(Request $request)
   {

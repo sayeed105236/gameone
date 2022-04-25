@@ -8,3 +8,4 @@
 <script src="{{asset('assets/js/app.js')}}"></script>
 <!-- apexchart JavaScript -->
 <script src="{{asset('assets/js/charts/apexcharts.js')}}"></script>
+@stack('scripts')

@@ -6,6 +6,7 @@
             <div class="row  row-cols-1 row-cols-md-1 g-4">
                 <div class="col">
                     <div class="card">
+                    @include('sweetalert::alert')
                     <div class="card-body">
                         <h2 class="card-title">My Affilates</h2>
                         <a class="btn btn-primary float-right" href="#" data-bs-toggle="modal" data-bs-target="#accountinfoadd">Add New User</a>

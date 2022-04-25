@@ -31,15 +31,21 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\FrontendController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/home/buy_package/{id}', [App\Http\Controllers\FrontendController::class, 'buy_package'])->middleware('auth');
 Route::post('/home/buy_package/store', [App\Http\Controllers\FrontendController::class, 'store_package'])->name('buy-package')->middleware('auth');
+Route::get('/home/my_asset/{id}', [App\Http\Controllers\FrontendController::class, 'my_asset'])->middleware('auth');
+Route::get('/home/fund-transfer/{id}', [FrontendController::class, 'fund_transfer'])->middleware('auth');
+Route::post('/home/fund-transfer/store', [FrontendController::class, 'fund_transfer_store'])->name('fund-transfer')->middleware('auth');
 
 //user payment
 Route::get('/home/add-fund/{id}', [App\Http\Controllers\AddMoneyController::class, 'index'])->name('add-money')->middleware('auth');
 Route::post('/user/add-fund/store', [AddMoneyController::class,'Store'])->name('money-store')->middleware('auth');
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::post('/home/get-sponsor', [RegisterController::class,'getSponsor'])->name('get-sponsor');
+Route::post('/home/get-user', [HomeController::class,'getUser'])->name('get-users');
 
 //user affilate
 Route::get('/home/my-affilate/{id}', [AffilateController::class, 'index'])->name('affilates')->middleware('auth');
+Route::get('/home/add-affilate/{id}', [AffilateController::class, 'add_affilate'])->middleware('auth');
+Route::post('/home/add-affilate/store', [AffilateController::class, 'userAdd'])->name('affilate-add')->middleware('auth');
 
 
 //general settings
