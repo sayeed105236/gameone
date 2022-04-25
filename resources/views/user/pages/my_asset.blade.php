@@ -25,11 +25,8 @@
                                            <th scope="col">DAILY
                                             BUYER
                                             TOKEN</th>
-                                            <th scope="col">DAILY
-                                            SELLER
-                                            TOKEN</th>
-                                              <th scope="col">PACKAGE
-                                              VALUE</th>
+                                            <th scope="col">RECEIVED DAYS</th>
+                                              <th scope="col">REMAINING DAYS</th>
                                        </tr>
                                    </thead>
                                    <tbody>
@@ -43,8 +40,21 @@
 
                                             <td>{{$row->packages->amount}}</td>
                                             <td>{{($row->packages->amount)*(($row->packages->daily_buyer_token)/100)}}</td>
-                                            <td>{{$row->packages->daily_seller_token}}</td>
-                                            <td>{{$row->packages->package_price}}$</td>
+                                            <?php
+                                            $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i',$row->created_at);
+                                            $from = \Carbon\Carbon::now();
+
+                                            $diff_in_days = $to->diffInDays($from);
+
+
+                                            //dd($diff_in_days);
+
+
+                                             ?>
+
+
+                                            <td>{{$diff_in_days}}</td>
+                                            <td>{{($row->packages->duration)-($diff_in_days)}}</td>
                                        </tr>
                                        @endforeach
                                    </tbody>
