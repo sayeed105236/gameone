@@ -36,6 +36,15 @@
                  {{Session::get('token_sell_error')}}
                  </div>
                  </div>
+                 @elseif(Session::has('balance_error'))
+                 <div class="alert alert-danger d-flex align-items-center" role="alert">
+                 <svg class="bi flex-shrink-0 me-2" width="24" height="24">
+                 <use xlink:href="#check-circle-fill" />
+                 </svg>
+                 <div>
+                 {{Session::get('balance_error')}}
+                 </div>
+                 </div>
                  @endif
                   <div class="card-body ">
                      <div class="d-flex justify-content-between flex-wrap">

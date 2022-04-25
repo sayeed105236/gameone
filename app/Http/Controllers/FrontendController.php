@@ -142,33 +142,41 @@ class FrontendController extends Controller
   }
   public function store_buy_token(Request $request)
   {
-    $buy_token= new BuyToken;
-    $buy_token->user_id=$request->user_id;
-    $buy_token->quantity=$request->quantity;
-    $buy_token->total_value=$request->total_value;
-    $buy_token->payable=$request->payable;
-    $buy_token->save();
+    $data['sum_deposit']=AddMoney::where('user_id',Auth::id())->sum('amount');
 
-    $buy = new TokenWallet();
-    $buy->user_id= $request->user_id;
-  //  $buy->received_from= $request->user_id;
-    $buy->amount= $request->quantity;
-    $buy->method= 'Token Buy';
-    $buy->type= 'Credit';
-    $buy->description= 'Purchase '. $request->qauntity . ' at $'. $request->payable;
-    $buy->save();
+    if($data['sum_deposit'] < $request->amount)
+    {
+        return back()->with('balance_error', 'Insufficent Balance');
+    }else {
+      $buy_token= new BuyToken;
+      $buy_token->user_id=$request->user_id;
+      $buy_token->quantity=$request->quantity;
+      $buy_token->total_value=$request->total_value;
+      $buy_token->payable=$request->payable;
+      $buy_token->save();
 
-    $buy_deduct= new AddMoney();
-    $buy_deduct->user_id= $request->user_id;
+      $buy = new TokenWallet();
+      $buy->user_id= $request->user_id;
+    //  $buy->received_from= $request->user_id;
+      $buy->amount= $request->quantity;
+      $buy->method= 'Token Buy';
+      $buy->type= 'Credit';
+      $buy->description= 'Purchase '. $request->qauntity . ' at $'. $request->payable;
+      $buy->save();
 
-    $buy_deduct->amount= -($request->payable);
-    $buy_deduct->method= 'Buy Token';
-    $buy_deduct->type= 'Debit';
-    $buy_deduct->description= '$'.$request->payable .' is deducted For purchasing '. $request->quantity. ' Token';
-    $buy_deduct->status= 'approve';
-    $buy_deduct->save();
+      $buy_deduct= new AddMoney();
+      $buy_deduct->user_id= $request->user_id;
 
-      return back()->with('token_buy', 'Token Buy Successfully');
+      $buy_deduct->amount= -($request->payable);
+      $buy_deduct->method= 'Buy Token';
+      $buy_deduct->type= 'Debit';
+      $buy_deduct->description= '$'.$request->payable .' is deducted For purchasing '. $request->quantity. ' Token';
+      $buy_deduct->status= 'approve';
+      $buy_deduct->save();
+
+        return back()->with('token_buy', 'Token Buy Successfully');
+    }
+
   }
   public function store_sell_token(Request $request)
   {
