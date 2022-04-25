@@ -42,9 +42,9 @@
 
 
                                             <td>{{$row->packages->amount}}</td>
-                                            <td>{{$row->packages->daily_buyer_token}}</td>
+                                            <td>{{($row->packages->amount)*(($row->packages->daily_buyer_token)/100)}}</td>
                                             <td>{{$row->packages->daily_seller_token}}</td>
-                                            <td>{{$row->packages->package_price}}</td>
+                                            <td>{{$row->packages->package_price}}$</td>
                                        </tr>
                                        @endforeach
                                    </tbody>

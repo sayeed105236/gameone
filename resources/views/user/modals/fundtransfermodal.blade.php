@@ -3,6 +3,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel17">Transfer Fund</h4>
+
+
                 <button type="button" class="btn-primary close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -39,6 +41,9 @@
 
                         </div>
                         <div class="mb-3">
+                            <h6>Available Balance: {{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</h6>
+                              </div>
+                        <div class="mb-3">
 
                           <h6>Transfer limit $( >= 1 & <= 5000)</h6>
                         </div>
@@ -49,7 +54,7 @@
               </section>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Transfer</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Discard</button>
             </div>
               </form>
