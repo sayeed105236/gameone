@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use App\Models\SellToken;
 use App\Models\BuyToken;
 
+
 class FrontendController extends Controller
 {
   public function __construct()
@@ -142,6 +143,9 @@ class FrontendController extends Controller
   }
   public function store_buy_token(Request $request)
   {
+    $refer= User::where('id',Auth::id())->first();
+    $token= TokenRate::first();
+    //dd($token->refer_purchase_commission);
     $data['sum_deposit']=AddMoney::where('user_id',Auth::id())->sum('amount');
 
     if($data['sum_deposit'] < $request->amount)
@@ -163,6 +167,15 @@ class FrontendController extends Controller
       $buy->type= 'Credit';
       $buy->description= 'Purchase '. $request->qauntity . ' at $'. $request->payable;
       $buy->save();
+
+      $buy_refer = new BonusWallet();
+      $buy_refer->user_id= $refer->sponsor;
+    //  $buy_refer->received_from= $request->user_id;
+      $buy_refer->amount= ($request->quantity)*(($token->refer_purchase_commission)/100);
+      $buy_refer->method= 'Referrer Bonus';
+      $buy_refer->type= 'Credit';
+      $buy_refer->description= ($request->quantity)*(($token->refer_purchase_commission)/100) .' Refer Bonus from '. $request->user_id . ' for purchasing Token';
+      $buy_refer->save();
 
       $buy_deduct= new AddMoney();
       $buy_deduct->user_id= $request->user_id;
