@@ -231,6 +231,11 @@
 
                               </div>
                               <div class="mb-3">
+                                  <label for="exampleInputEmail1" class="form-label">Refer Token Purchase commission (%) :</label>
+                                  <input type="text" class="form-control" value="{{$token_rate->refer_purchase_commission}}" name="refer_purchase_commission"  id="exampleInputEmail1" aria-describedby="emailHelp" >
+
+                              </div>
+                              <div class="mb-3">
                                   <label for="exampleInputEmail1" class="form-label">Buy limit (Max) :</label>
                                   <input type="text" class="form-control" value="{{$token_rate->buy_limit_max}}" name="buy_limit_max"  id="exampleInputEmail1" aria-describedby="emailHelp" >
 

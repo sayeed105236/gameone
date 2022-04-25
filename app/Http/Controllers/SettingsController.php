@@ -33,6 +33,7 @@ class SettingsController extends Controller
     $token->buy_limit_min= $request->buy_limit_min;
     $token->sell_limit_max= $request->sell_limit_max;
     $token->sell_limit_min=$request->sell_limit_min;
+    $token->refer_purchase_commission=$request->refer_purchase_commission;
     $token->save();
       return back()->with('token_rate_updated', 'Token Rate Successfully Updated!!');
   }

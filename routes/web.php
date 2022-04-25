@@ -35,6 +35,9 @@ Route::get('/home/my_asset/{id}', [App\Http\Controllers\FrontendController::clas
 Route::get('/home/fund-transfer/{id}', [FrontendController::class, 'fund_transfer'])->middleware('auth');
 Route::post('/home/fund-transfer/store', [FrontendController::class, 'fund_transfer_store'])->name('fund-transfer')->middleware('auth');
 
+//user buy token
+Route::post('/home/buy_token/store', [FrontendController::class, 'store_buy_token'])->name('buy-token')->middleware('auth');
+Route::post('/home/sell_token/store', [FrontendController::class, 'store_sell_token'])->name('sell-token')->middleware('auth');
 //user payment
 Route::get('/home/add-fund/{id}', [App\Http\Controllers\AddMoneyController::class, 'index'])->name('add-money')->middleware('auth');
 Route::post('/user/add-fund/store', [AddMoneyController::class,'Store'])->name('money-store')->middleware('auth');

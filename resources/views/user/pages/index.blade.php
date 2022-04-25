@@ -8,6 +8,26 @@
          <div class="row align-items-center mb-4">
             <div class="col-xl-9 d-none d-md-block">
                <div class="card mb-xl-0">
+
+                 @if(Session::has('token_sell'))
+                 <div class="alert alert-success d-flex align-items-center" role="alert">
+                 <svg class="bi flex-shrink-0 me-2" width="24" height="24">
+                 <use xlink:href="#check-circle-fill" />
+                 </svg>
+                 <div>
+                 {{Session::get('token_sell')}}
+                 </div>
+                 </div>
+                 @elseif(Session::has('token_sell_error'))
+                 <div class="alert alert-danger d-flex align-items-center" role="alert">
+                 <svg class="bi flex-shrink-0 me-2" width="24" height="24">
+                 <use xlink:href="#check-circle-fill" />
+                 </svg>
+                 <div>
+                 {{Session::get('token_sell_error')}}
+                 </div>
+                 </div>
+                 @endif
                   <div class="card-body ">
                      <div class="d-flex justify-content-between flex-wrap">
                         <div class="d-flex">
@@ -193,54 +213,49 @@
                   <div class="card">
                      <div class="card-header d-flex justify-content-between flex-wrap">
                         <div class="header-title ">
-                           <h4 class="card-title">Quick Trade</h4>
+                           <h4 class="card-title">Buy/Sell Token</h4>
                         </div>
-                        <div class="d-flex">
-                           <div class="dropdown p-0">
-                              <button class="btn btn-soft-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-expanded="false">
-                                 <img src="{{asset('assets/images/coins/01.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img5">
-                                 561,511 btc
-                              </button>
-                              <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton5">
-                                 <li><a href="#" class="dropdown-item"><img src="{{asset('assets/images/coins/01.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img75"> 561,511 Btc</a></li>
-                                 <li><a href="#" class="dropdown-item"><img src="{{asset('assets/images/coins/06.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img76"> 561,511 Ltc</a></li>
-                                 <li><a href="#" class="dropdown-item"><img src="{{asset('assets/images/coins/03.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img77"> 561,511 Eth</a></li>
-                                 <li><a href="#" class="dropdown-item"><img src="{{asset('assets/images/coins/08.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img78"> 561,511 Xmr</a></li>
-                              </ul>
-                           </div>
-                        </div>
+
                      </div>
                      <div class="card-body">
                         <form class="col-lg-12">
                            <div class="form-group mb-3">
                               <div class="input-group pt-1">
-                                 <span class="input-group-text" id="basic-addon3">BTC</span>
-                                 <input type="text" class="form-control col-lg-8" placeholder="0,000000" aria-label="Recipient's username" aria-describedby="basic-addon3">
+                                 <span class="input-group-text" id="basic-addon3">Avl. Balance ($)</span>
+                                 <input type="text" disabled class="form-control col-lg-8" value="{{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}" aria-label="Recipient's username" aria-describedby="basic-addon3">
                               </div>
                            </div>
                            <div class="form-group mb-3">
                               <div class="input-group pt-2">
-                                 <span class="input-group-text" id="basic-addon4">BPL</span>
-                                 <input type="text" class="form-control col-lg-8" placeholder="0,000000" aria-label="Recipient's username" aria-describedby="basic-addon3">
+                                 <span class="input-group-text" id="basic-addon4">Price/Token ($)</span>
+                                 <input type="text" disabled class="form-control col-lg-8" value="{{$data['settings']->token_convert_rate}}" aria-label="Recipient's username" aria-describedby="basic-addon3">
                               </div>
 
                            </div>
                            <div class="form-group mb-3">
                               <div class="input-group pt-2">
-                                 <span class="input-group-text" id="basic-addon6">Total</span>
-                                 <input type="text" class="form-control col-lg-8" placeholder="0,000000" aria-label="Recipient's username" aria-describedby="basic-addon3">
+                                 <span class="input-group-text" id="basic-addon6">Buying Fee (%)</span>
+                                 <input type="text" disabled class="form-control col-lg-8" value="{{$data['settings']->buying_commission}}" aria-label="Recipient's username" aria-describedby="basic-addon3">
+                              </div>
+                           </div>
+                           <div class="form-group mb-3">
+                              <div class="input-group pt-2">
+                                 <span class="input-group-text" id="basic-addon6">Selling Fee (%)</span>
+                                 <input type="text" disabled class="form-control col-lg-8" value="{{$data['settings']->selling_commission}}" aria-label="Recipient's username" aria-describedby="basic-addon3">
                               </div>
                            </div>
                            <div class="">
                               <div class="d-grid gap-card grid-cols-2">
-                                 <button class="btn btn-success" type="button">
+                                 <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#tokenbuymodal">
                                     <span>BUY</span>
                                     <svg class="rotate-45" width="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.75 11.7256L4.75 11.7256" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.7002 5.70124L19.7502 11.7252L13.7002 17.7502" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                  </button>
-                                 <button class="btn btn-danger" type="button">
+                                 @include('user.modals.tokenbuymodal')
+                                 <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#tokensellmodal">
                                     <span>SELL</span>
                                     <svg class="rotate-45" width="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.25 12.2744L19.25 12.2744" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.2998 18.2988L4.2498 12.2748L10.2998 6.24976" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                  </button>
+                                 @include('user.modals.tokensellmodal')
                               </div>
                            </div>
                         </form>
@@ -744,6 +759,37 @@
    </div>
 </div>
 
+@push('scripts')
 
+<script>
+function calculate(){
+
+
+
+  var amount = document.getElementById('amount').value;
+  var value = amount * <?php echo $data['settings']->token_convert_rate ?>;
+
+
+  document.getElementById('total_value').value= value;
+  var payable= value * ( <?php echo $data['settings']->buying_commission ?>/100)+value;
+  document.getElementById('payable').value= payable;
+
+}
+function calculate2(){
+
+
+
+  var amount2 = document.getElementById('amount2').value;
+  var value2 = amount2 * <?php echo $data['settings']->token_convert_rate ?>;
+
+
+  document.getElementById('total_value2').value= value2;
+  var payable2= value2-(value2 * ( <?php echo $data['settings']->selling_commission ?>/100));
+  document.getElementById('payable2').value= payable2;
+
+}
+
+</script>
+@endpush
 
 @endsection

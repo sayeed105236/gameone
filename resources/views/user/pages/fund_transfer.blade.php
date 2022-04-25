@@ -47,20 +47,21 @@
                                        </tr>
                                    </thead>
 
-
+                                    @foreach($transfer as $row)
                                        <tr>
-                                          <td ></td>
-                                           <td></td>
+                                          <td >{{$loop->index+1}}</td>
+                                           <td>{{$row->created_at}}</td>
                                            <td>
-
+                                              {{$row->receiver->user_name}}
                                            </td>
-                                           <td></td>
-                                           <td></td>
-                                           <td></td>
+                                           <td>{{$row->description}}</td>
+                                           <td>{{$row->method}}</td>
+                                           <td>{{$row->amount}}</td>
 
 
 
                                        </tr>
+                                       @endforeach
 
 
 

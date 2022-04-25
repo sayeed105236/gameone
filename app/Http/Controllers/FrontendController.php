@@ -9,8 +9,10 @@ use App\Models\BonusWallet;
 use App\Models\TokenWallet;
 use Auth;
 use App\Models\PackageSettings;
+use App\Models\TokenRate;
 use App\Models\Purchase;
 use Carbon\Carbon;
+use App\Models\SellToken;
 
 class FrontendController extends Controller
 {
@@ -26,6 +28,7 @@ class FrontendController extends Controller
     $data['sum_deposit']=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
       $data['sum_deposit_bonus']=BonusWallet::where('user_id',Auth::id())->sum('amount');
         $data['sum_deposit_token']=TokenWallet::where('user_id',Auth::id())->sum('amount');
+        $data['settings']= TokenRate::first();
       return view('user.pages.index',compact('data'));
   }
   public function buy_package($id)
@@ -92,9 +95,9 @@ class FrontendController extends Controller
     $data['deposit']=AddMoney::where('user_id',Auth::id())->first();
 
     $data['sum_deposit']=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
-    $transfer= AddMoney::where('user_id',Auth::id())->where('method','Transfer Money')->get();
+    $transfer= AddMoney::where('user_id',Auth::id())->where('method','Transfer Money')->where('type','Debit')->get();
 
-    return view('user.pages.fund_transfer',compact('data'));
+    return view('user.pages.fund_transfer',compact('data','transfer'));
   }
   public function fund_transfer_store(Request $request)
   {
@@ -109,7 +112,7 @@ class FrontendController extends Controller
       $transfer_deduct->amount= -($request->amount);
       $transfer_deduct->method= 'Transfer Money';
       $transfer_deduct->type= 'Debit';
-      $transfer_deduct->description= $request->amount .' Transfer to '. $receiver_name->user_name;
+      $transfer_deduct->description= '$'.$request->amount .' Transfer to '. $receiver_name->user_name;
       $transfer_deduct->status= 'approve';
       $transfer_deduct->save();
 
@@ -125,6 +128,50 @@ class FrontendController extends Controller
       $transfer->save();
 
       return back()->with('transfer_fund', 'Fund Transfer Successfully');
+
+  }
+  public function store_buy_token(Request $request)
+  {
+    dd($request);
+  }
+  public function store_sell_token(Request $request)
+  {
+      $data['sum_deposit_bonus']=BonusWallet::where('user_id',Auth::id())->sum('amount');
+
+    if($data['sum_deposit_bonus'] < $request->payable)
+    {
+        return back()->with('token_sell_error', 'Insufficent Balance');
+
+    }else {
+      $sell_token= new SellToken;
+      $sell_token->user_id=$request->user_id;
+      $sell_token->quantity=$request->quantity;
+      $sell_token->total_value=$request->total_value;
+      $sell_token->payable=$request->payable;
+      $sell_token->save();
+
+      $sell_deduct = new BonusWallet();
+      $sell_deduct->user_id= $request->user_id;
+    //  $sell_deduct->received_from= $request->user_id;
+      $sell_deduct->amount= -($request->total_value);
+      $sell_deduct->method= 'Token Sell';
+      $sell_deduct->type= 'Debit';
+      $sell_deduct->description= 'Received Cash Amount '. $request->payable . ' for selling '. $request->qauntity;
+      $sell_deduct->save();
+
+
+      $sell= new AddMoney();
+      $sell->user_id= $request->user_id;
+
+      $sell->amount= $request->payable;
+      $sell->method= 'Sell Token';
+      $sell->type= 'Credit';
+      $sell->description= $request->payable .' By selling Token ';
+      $sell->status= 'approve';
+      $sell->save();
+
+        return back()->with('token_sell', 'Token Sell Successfully');
+    }
 
   }
 
