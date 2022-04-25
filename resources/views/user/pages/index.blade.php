@@ -209,11 +209,236 @@
                      </div>
                   </div>
                </div>
+               <div class="col-lg-12">
+                  <div class="card card-block card-stretch custom-scroll">
+                     <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+                        <div class="caption">
+                           <h4 class="font-weight-bold mb-2">Recent Trading Activities</h4>
+                           <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                           <input type="checkbox" class="btn-check" id="btncheck1">
+                           <label class="btn btn-sm btn-secondary active rounded-start" for="btncheck1">Monthly</label>
+
+                           <input type="checkbox" class="btn-check" id="btncheck2">
+                           <label class="btn btn-sm btn-secondary " for="btncheck2">Weekly</label>
+
+                           <input type="checkbox" class="btn-check" id="btncheck3">
+                           <label class="btn btn-sm btn-secondary rounded-end" for="btncheck3">Today</label>
+                        </div>
+                     </div>
+                     <div class="card-body">
+                        <div class="table-responsive">
+                           <table class="table data-table mb-0">
+                              <thead>
+                                 <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">24h %</th>
+                                    <th scope="col">7d %</th>
+                                    <th scope="col">Market Cap</th>
+                                    <th scope="col">Volume(24th)</th>
+                                    <th scope="col">Circulating</th>
+                                    <th scope="col">Last 7 Days</th>
+                                 </tr>
+                              </thead>
+                                 <tbody>
+                                    <tr class="white-space-no-wrap">
+                                       <td>
+                                          <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
+                                          Bitcoin BTC<a class="button btn-primary badge ms-2" type="button">Buy</a>
+                                       </td>
+                                       <td class="pe-2">$40,501.87</td>
+                                       <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
+                                          </svg>
+                                          6.93%
+                                       </td>
+                                       <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
+                                          </svg>
+                                          4.58%
+                                       </td>
+                                       <td>$123,456,789,159</td>
+                                       <td>$373,359,580,155<br>
+                                          <small class="ms-5">635,237 BTC</small>
+                                       </td>
+                                       <td class="ms-5">18,777,768 BTC</td>
+                                       <td>
+                                          <div class="d-flex justify-content-between">
+                                             <div id="sparklinechart-1"></div>
+                                             <div class="dropdown ms-4">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                                </svg>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
+                                                   <li><a class="dropdown-item" href="#">View Charts</a></li>
+                                                   <li><a class="dropdown-item" href="#">View Markets</a></li>
+                                                   <li><a class="dropdown-item" href="#">View Historical Data</a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr class="white-space-no-wrap">
+                                       <td>
+                                             <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
+                                             Ethereum ETH<a class="button btn-primary badge ms-2" type="button">Buy</a>
+                                       </td>
+                                       <td class="pe-2">$2,796.60</td>
+                                       <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
+                                          </svg>
+                                          3.33%
+                                       </td>
+                                       <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
+                                          </svg>
+                                          15.45%
+                                       </td>
+                                       <td>$123,456,789,159</td>
+                                       <td>$373,359,580,155<br>
+                                          <small class="ms-5">635,237 BTC</small>
+                                       </td>
+                                       <td class="ms-5">18,777,768 BTC</td>
+                                       <td>
+                                          <div class="d-flex justify-content-between">
+                                             <div id="sparklinechart-2"></div>
+                                             <div class="dropdown ms-4">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                                </svg>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
+                                                   <li><a class="dropdown-item" href="#">View Charts</a></li>
+                                                   <li><a class="dropdown-item" href="#">View Markets</a></li>
+                                                   <li><a class="dropdown-item" href="#">View Historical Data</a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr class="white-space-no-wrap">
+                                       <td>
+                                             <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
+                                             Monero XMR<a class="button btn-primary badge ms-2" type="button">Buy</a>
+                                       </td>
+                                       <td class="pe-2">$1.00</td>
+                                       <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
+                                          </svg>
+                                          0.01%
+                                       </td>
+                                       <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
+                                          </svg>
+                                          0.02%
+                                       </td>
+                                       <td>$123,456,789,159</td>
+                                       <td>$373,359,580,155<br>
+                                          <small class="ms-5">635,237 BTC</small>
+                                       </td>
+                                       <td class="ms-5">18,777,768 BTC</td>
+                                       <td>
+                                          <div class="d-flex justify-content-between">
+                                             <div id="sparklinechart-3"></div>
+                                             <div class="dropdown ms-4">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                                </svg>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
+                                                   <li><a class="dropdown-item" href="#">View Charts</a></li>
+                                                   <li><a class="dropdown-item" href="#">View Markets</a></li>
+                                                   <li><a class="dropdown-item" href="#">View Historical Data</a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr class="white-space-no-wrap">
+                                       <td>
+                                             <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
+                                             Litecoin LTC<a class="button btn-primary badge ms-2" type="button">Buy</a>
+                                       </td>
+                                       <td class="pe-2">$40,501.87</td>
+                                       <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
+                                          </svg>
+                                          6.93%
+                                       </td>
+                                       <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
+                                          </svg>
+                                          4.58%
+                                       </td>
+                                       <td>$123,456,789,159</td>
+                                       <td>$373,359,580,155<br>
+                                          <small class="ms-5">635,237 BTC</small>
+                                       </td>
+                                       <td class="ms-5">18,777,768 BTC</td>
+                                       <td>
+                                          <div class="d-flex justify-content-between">
+                                             <div id="sparklinechart-4"></div>
+                                             <div class="dropdown ms-4">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                                </svg>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
+                                                   <li><a class="dropdown-item" href="#">View Charts</a></li>
+                                                   <li><a class="dropdown-item" href="#">View Markets</a></li>
+                                                   <li><a class="dropdown-item" href="#">View Historical Data</a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr class="white-space-no-wrap">
+                                       <td>
+                                             <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
+                                             Bitcoin BTC<a class="button btn-primary badge ms-2" type="button">Buy</a>
+                                       </td>
+                                       <td class="pe-2">$40,501.87</td>
+                                       <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
+                                          </svg>
+                                          6.93%
+                                       </td>
+                                       <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
+                                          </svg>
+                                          4.58%
+                                       </td>
+                                       <td>$123,456,789,159</td>
+                                       <td>$373,359,580,155<br>
+                                          <small class="ms-5">635,237 BTC</small>
+                                       </td>
+                                       <td class="ms-5">18,777,768 BTC</td>
+                                       <td>
+                                          <div class="d-flex justify-content-between">
+                                             <div id="sparklinechart-5"></div>
+                                             <div class="dropdown ms-4">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                                </svg>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
+                                                   <li><a class="dropdown-item" href="#">View Charts</a></li>
+                                                   <li><a class="dropdown-item" href="#">View Markets</a></li>
+                                                   <li><a class="dropdown-item" href="#">View Historical Data</a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
                <div class="col-lg-6">
                   <div class="card">
                      <div class="card-header d-flex justify-content-between flex-wrap">
                         <div class="header-title ">
-                           <h4 class="card-title">Buy/Sell Token</h4>
+                           <h4 class="card-title">Buy Token</h4>
                         </div>
 
                      </div>
@@ -225,12 +450,7 @@
                                  <input type="text" disabled class="form-control col-lg-8" value="{{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}" aria-label="Recipient's username" aria-describedby="basic-addon3">
                               </div>
                            </div>
-                           <div class="form-group mb-3">
-                              <div class="input-group pt-1">
-                                 <span class="input-group-text" id="basic-addon3">Avl. Bonus Bal(Tok)</span>
-                                 <input type="text" disabled class="form-control col-lg-8" value="{{$data['sum_deposit_bonus'] ? '$'.number_format((float)$data['sum_deposit_bonus'], 2, '.', '') : '$00.00'}}" aria-label="Recipient's username" aria-describedby="basic-addon3">
-                              </div>
-                           </div>
+
                            <div class="form-group mb-3">
                               <div class="input-group pt-2">
                                  <span class="input-group-text" id="basic-addon4">Price/Token ($)</span>
@@ -244,19 +464,55 @@
                                  <input type="text" disabled class="form-control col-lg-8" value="{{$data['settings']->buying_commission}}" aria-label="Recipient's username" aria-describedby="basic-addon3">
                               </div>
                            </div>
-                           <div class="form-group mb-3">
-                              <div class="input-group pt-2">
-                                 <span class="input-group-text" id="basic-addon6">Selling Fee (%)</span>
-                                 <input type="text" disabled class="form-control col-lg-8" value="{{$data['settings']->selling_commission}}" aria-label="Recipient's username" aria-describedby="basic-addon3">
-                              </div>
-                           </div>
-                           <div class="">
+
+                           <div class="text-center">
                               <div class="d-grid gap-card grid-cols-2">
                                  <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#tokenbuymodal">
                                     <span>BUY</span>
                                     <svg class="rotate-45" width="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.75 11.7256L4.75 11.7256" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.7002 5.70124L19.7502 11.7252L13.7002 17.7502" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                  </button>
                                  @include('user.modals.tokenbuymodal')
+
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-6">
+                  <div class="card">
+                     <div class="card-header d-flex justify-content-between flex-wrap">
+                        <div class="header-title ">
+                           <h4 class="card-title">Sell Token</h4>
+                        </div>
+
+                     </div>
+                     <div class="card-body">
+                        <form class="col-lg-12">
+
+                           <div class="form-group mb-3">
+                              <div class="input-group pt-1">
+                                 <span class="input-group-text" id="basic-addon3">Avl. Bonus Bal(Tok)</span>
+                                 <input type="text" disabled class="form-control col-lg-8" value="{{$data['sum_deposit_bonus'] ? '$'.number_format((float)$data['sum_deposit_bonus'], 2, '.', '') : '$00.00'}}" aria-label="Recipient's username" aria-describedby="basic-addon3">
+                              </div>
+                           </div>
+                           <div class="form-group mb-3">
+                              <div class="input-group pt-2">
+                                 <span class="input-group-text" id="basic-addon4">Price/Token ($)</span>
+                                 <input type="text" disabled class="form-control col-lg-8" value="{{$data['settings']->token_convert_rate}}" aria-label="Recipient's username" aria-describedby="basic-addon3">
+                              </div>
+
+                           </div>
+
+                           <div class="form-group mb-3">
+                              <div class="input-group pt-2">
+                                 <span class="input-group-text" id="basic-addon6">Selling Fee (%)</span>
+                                 <input type="text" disabled class="form-control col-lg-8" value="{{$data['settings']->selling_commission}}" aria-label="Recipient's username" aria-describedby="basic-addon3">
+                              </div>
+                           </div>
+                           <div class="text-center">
+                              <div class="d-grid gap-card grid-cols-2">
+
                                  <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#tokensellmodal">
                                     <span>SELL</span>
                                     <svg class="rotate-45" width="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.25 12.2744L19.25 12.2744" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.2998 18.2988L4.2498 12.2748L10.2998 6.24976" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
@@ -268,7 +524,7 @@
                      </div>
                   </div>
                </div>
-               <div class="col-lg-6">
+               <!-- <div class="col-lg-6">
                   <div class="card">
                      <div class="card-header">
                         <div class="header-title ">
@@ -327,7 +583,7 @@
                         </div>
                      </div>
                   </div>
-               </div>
+               </div> -->
             </div>
          </div>
          <div class="col-lg-12">
@@ -383,231 +639,7 @@
                </div>
             </div>
          </div>
-         <div class="col-lg-12">
-            <div class="card card-block card-stretch custom-scroll">
-               <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
-                  <div class="caption">
-                     <h4 class="font-weight-bold mb-2">Recent Trading Activities</h4>
-                     <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  </div>
-                  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                     <input type="checkbox" class="btn-check" id="btncheck1">
-                     <label class="btn btn-sm btn-secondary active rounded-start" for="btncheck1">Monthly</label>
 
-                     <input type="checkbox" class="btn-check" id="btncheck2">
-                     <label class="btn btn-sm btn-secondary " for="btncheck2">Weekly</label>
-
-                     <input type="checkbox" class="btn-check" id="btncheck3">
-                     <label class="btn btn-sm btn-secondary rounded-end" for="btncheck3">Today</label>
-                  </div>
-               </div>
-               <div class="card-body">
-                  <div class="table-responsive">
-                     <table class="table data-table mb-0">
-                        <thead>
-                           <tr>
-                              <th scope="col">Name</th>
-                              <th scope="col">Price</th>
-                              <th scope="col">24h %</th>
-                              <th scope="col">7d %</th>
-                              <th scope="col">Market Cap</th>
-                              <th scope="col">Volume(24th)</th>
-                              <th scope="col">Circulating</th>
-                              <th scope="col">Last 7 Days</th>
-                           </tr>
-                        </thead>
-                           <tbody>
-                              <tr class="white-space-no-wrap">
-                                 <td>
-                                    <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
-                                    Bitcoin BTC<a class="button btn-primary badge ms-2" type="button">Buy</a>
-                                 </td>
-                                 <td class="pe-2">$40,501.87</td>
-                                 <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
-                                    </svg>
-                                    6.93%
-                                 </td>
-                                 <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
-                                    </svg>
-                                    4.58%
-                                 </td>
-                                 <td>$123,456,789,159</td>
-                                 <td>$373,359,580,155<br>
-                                    <small class="ms-5">635,237 BTC</small>
-                                 </td>
-                                 <td class="ms-5">18,777,768 BTC</td>
-                                 <td>
-                                    <div class="d-flex justify-content-between">
-                                       <div id="sparklinechart-1"></div>
-                                       <div class="dropdown ms-4">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                                          </svg>
-                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                             <li><a class="dropdown-item" href="#">View Charts</a></li>
-                                             <li><a class="dropdown-item" href="#">View Markets</a></li>
-                                             <li><a class="dropdown-item" href="#">View Historical Data</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr class="white-space-no-wrap">
-                                 <td>
-                                       <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
-                                       Ethereum ETH<a class="button btn-primary badge ms-2" type="button">Buy</a>
-                                 </td>
-                                 <td class="pe-2">$2,796.60</td>
-                                 <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
-                                    </svg>
-                                    3.33%
-                                 </td>
-                                 <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
-                                    </svg>
-                                    15.45%
-                                 </td>
-                                 <td>$123,456,789,159</td>
-                                 <td>$373,359,580,155<br>
-                                    <small class="ms-5">635,237 BTC</small>
-                                 </td>
-                                 <td class="ms-5">18,777,768 BTC</td>
-                                 <td>
-                                    <div class="d-flex justify-content-between">
-                                       <div id="sparklinechart-2"></div>
-                                       <div class="dropdown ms-4">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                                          </svg>
-                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                             <li><a class="dropdown-item" href="#">View Charts</a></li>
-                                             <li><a class="dropdown-item" href="#">View Markets</a></li>
-                                             <li><a class="dropdown-item" href="#">View Historical Data</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr class="white-space-no-wrap">
-                                 <td>
-                                       <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
-                                       Monero XMR<a class="button btn-primary badge ms-2" type="button">Buy</a>
-                                 </td>
-                                 <td class="pe-2">$1.00</td>
-                                 <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
-                                    </svg>
-                                    0.01%
-                                 </td>
-                                 <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
-                                    </svg>
-                                    0.02%
-                                 </td>
-                                 <td>$123,456,789,159</td>
-                                 <td>$373,359,580,155<br>
-                                    <small class="ms-5">635,237 BTC</small>
-                                 </td>
-                                 <td class="ms-5">18,777,768 BTC</td>
-                                 <td>
-                                    <div class="d-flex justify-content-between">
-                                       <div id="sparklinechart-3"></div>
-                                       <div class="dropdown ms-4">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                                          </svg>
-                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                             <li><a class="dropdown-item" href="#">View Charts</a></li>
-                                             <li><a class="dropdown-item" href="#">View Markets</a></li>
-                                             <li><a class="dropdown-item" href="#">View Historical Data</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr class="white-space-no-wrap">
-                                 <td>
-                                       <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
-                                       Litecoin LTC<a class="button btn-primary badge ms-2" type="button">Buy</a>
-                                 </td>
-                                 <td class="pe-2">$40,501.87</td>
-                                 <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
-                                    </svg>
-                                    6.93%
-                                 </td>
-                                 <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
-                                    </svg>
-                                    4.58%
-                                 </td>
-                                 <td>$123,456,789,159</td>
-                                 <td>$373,359,580,155<br>
-                                    <small class="ms-5">635,237 BTC</small>
-                                 </td>
-                                 <td class="ms-5">18,777,768 BTC</td>
-                                 <td>
-                                    <div class="d-flex justify-content-between">
-                                       <div id="sparklinechart-4"></div>
-                                       <div class="dropdown ms-4">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                                          </svg>
-                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                             <li><a class="dropdown-item" href="#">View Charts</a></li>
-                                             <li><a class="dropdown-item" href="#">View Markets</a></li>
-                                             <li><a class="dropdown-item" href="#">View Historical Data</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr class="white-space-no-wrap">
-                                 <td>
-                                       <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
-                                       Bitcoin BTC<a class="button btn-primary badge ms-2" type="button">Buy</a>
-                                 </td>
-                                 <td class="pe-2">$40,501.87</td>
-                                 <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
-                                    </svg>
-                                    6.93%
-                                 </td>
-                                 <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
-                                    </svg>
-                                    4.58%
-                                 </td>
-                                 <td>$123,456,789,159</td>
-                                 <td>$373,359,580,155<br>
-                                    <small class="ms-5">635,237 BTC</small>
-                                 </td>
-                                 <td class="ms-5">18,777,768 BTC</td>
-                                 <td>
-                                    <div class="d-flex justify-content-between">
-                                       <div id="sparklinechart-5"></div>
-                                       <div class="dropdown ms-4">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                                          </svg>
-                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                             <li><a class="dropdown-item" href="#">View Charts</a></li>
-                                             <li><a class="dropdown-item" href="#">View Markets</a></li>
-                                             <li><a class="dropdown-item" href="#">View Historical Data</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                           </tbody>
-                     </table>
-                  </div>
-               </div>
-            </div>
-         </div>
       </div>
    </div>
    <div class="col-lg-4">

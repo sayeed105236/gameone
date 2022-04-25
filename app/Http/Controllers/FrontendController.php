@@ -101,33 +101,44 @@ class FrontendController extends Controller
   }
   public function fund_transfer_store(Request $request)
   {
+    $data['sum_deposit']=AddMoney::where('user_id',Auth::id())->sum('amount');
 
-      $receiver_id= User::where('user_name',$request->receiver_id)->pluck('id')->first();
-      $receiver_name= User::where('id',$receiver_id)->first();
+    if($data['sum_deposit'] < $request->amount)
+    {
+        return back()->with('transfer_error', 'Insufficent Balance');
+    }else{
+
+            $receiver_id= User::where('user_name',$request->receiver_id)->pluck('id')->first();
+            $receiver_name= User::where('id',$receiver_id)->first();
 
 
-      $transfer_deduct= new AddMoney();
-      $transfer_deduct->user_id= $request->user_id;
-      $transfer_deduct->receiver_id= $receiver_id;
-      $transfer_deduct->amount= -($request->amount);
-      $transfer_deduct->method= 'Transfer Money';
-      $transfer_deduct->type= 'Debit';
-      $transfer_deduct->description= '$'.$request->amount .' Transfer to '. $receiver_name->user_name;
-      $transfer_deduct->status= 'approve';
-      $transfer_deduct->save();
+            $transfer_deduct= new AddMoney();
+            $transfer_deduct->user_id= $request->user_id;
+            $transfer_deduct->receiver_id= $receiver_id;
+            $transfer_deduct->amount= -($request->amount);
+            $transfer_deduct->method= 'Transfer Money';
+            $transfer_deduct->type= 'Debit';
+            $transfer_deduct->description= '$'.$request->amount .' Transfer to '. $receiver_name->user_name;
+            $transfer_deduct->status= 'approve';
+            $transfer_deduct->save();
 
-      $sender_name= User::where('id',$request->user_id)->first();
-      $transfer= new AddMoney();
-      $transfer->user_id= $receiver_id;
-      $transfer->received_from= $request->user_id;
-      $transfer->amount= $request->amount;
-      $transfer->method= 'Transfer Money';
-      $transfer->type= 'Credit';
-      $transfer->description= $request->amount .' Transfer amount from '. $sender_name->user_name;
-      $transfer->status= 'approve';
-      $transfer->save();
+            $sender_name= User::where('id',$request->user_id)->first();
+            $transfer= new AddMoney();
+            $transfer->user_id= $receiver_id;
+            $transfer->received_from= $request->user_id;
+            $transfer->amount= $request->amount;
+            $transfer->method= 'Transfer Money';
+            $transfer->type= 'Credit';
+            $transfer->description= $request->amount .' Transfer amount from '. $sender_name->user_name;
+            $transfer->status= 'approve';
+            $transfer->save();
 
-      return back()->with('transfer_fund', 'Fund Transfer Successfully');
+            return back()->with('transfer_fund', 'Fund Transfer Successfully');
+
+    }
+
+
+
 
   }
   public function store_buy_token(Request $request)
@@ -153,7 +164,7 @@ class FrontendController extends Controller
       $sell_deduct = new BonusWallet();
       $sell_deduct->user_id= $request->user_id;
     //  $sell_deduct->received_from= $request->user_id;
-      $sell_deduct->amount= -($request->total_value);
+      $sell_deduct->amount= -($request->quantity);
       $sell_deduct->method= 'Token Sell';
       $sell_deduct->type= 'Debit';
       $sell_deduct->description= 'Received Cash Amount '. $request->payable . ' for selling '. $request->qauntity;

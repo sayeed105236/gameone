@@ -19,6 +19,15 @@
              {{Session::get('transfer_fund')}}
          </div>
      </div>
+     @elseif(Session::has('transfer_error'))
+               <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24">
+            <use xlink:href="#check-circle-fill" />
+            </svg>
+            <div>
+            {{Session::get('transfer_error')}}
+            </div>
+            </div>
      @endif
 
 
