@@ -226,6 +226,12 @@
                               </div>
                            </div>
                            <div class="form-group mb-3">
+                              <div class="input-group pt-1">
+                                 <span class="input-group-text" id="basic-addon3">Avl. Bonus Bal(Tok)</span>
+                                 <input type="text" disabled class="form-control col-lg-8" value="{{$data['sum_deposit_bonus'] ? '$'.number_format((float)$data['sum_deposit_bonus'], 2, '.', '') : '$00.00'}}" aria-label="Recipient's username" aria-describedby="basic-addon3">
+                              </div>
+                           </div>
+                           <div class="form-group mb-3">
                               <div class="input-group pt-2">
                                  <span class="input-group-text" id="basic-addon4">Price/Token ($)</span>
                                  <input type="text" disabled class="form-control col-lg-8" value="{{$data['settings']->token_convert_rate}}" aria-label="Recipient's username" aria-describedby="basic-addon3">
