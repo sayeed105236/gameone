@@ -146,8 +146,8 @@
             </div>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <li class="border-0"><a class="dropdown-item" href="../dashboard/app/user-profile.html">Profile</a></li>
-            <li class="border-0"><a class="dropdown-item" href="../dashboard/app/user-privacy-setting.html">Privacy Setting</a></li>
+            <li class="border-0"><a class="dropdown-item" href="/home/user-profile/{{Auth::user()->id}}">Profile</a></li>
+            <li class="border-0"><a class="dropdown-item" href="#">Payment Setting</a></li>
             <li class="border-0"><hr class="m-0 dropdown-divider"></li>
             <li class="border-0"><a class="dropdown-item" href="{{ route('logout') }}"
                onclick="event.preventDefault();

@@ -48,6 +48,15 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+     public function showRegistrationForm(Request $request)
+{
+    if ($request->has('ref')) {
+        session(['referrer' => $request->query('ref')]);
+    }
+
+    return view('auth.register');
+}
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -93,4 +102,12 @@ class RegisterController extends Controller
         }
 
     }
+    protected function registered(Request $request, $user)
+{
+    if ($user->referrer !== null) {
+        Notification::send($user->referrer, new ReferrerBonus($user));
+    }
+
+    return redirect($this->redirectPath());
+}
 }

@@ -67,6 +67,15 @@
                                         @enderror
                                     </div>
                               </div>
+                              @if(isset($_GET['ref']))
+                              <div class="col-md-6 mb-4">
+                                 <div class="form-floating mb-3">
+                                       <input type="text" class="form-control" value="{{$_GET['ref']}}" name="sponsor" id="sponsor" placeholder="Sponsor Username">
+                                       <label for="sponsor">Sponsor</label>
+                                 </div>
+                                 <div id="suggestUser"></div>
+                              </div>
+                              @else
                               <div class="col-md-6 mb-4">
                                  <div class="form-floating mb-3">
                                        <input type="text" class="form-control" name="sponsor" id="sponsor" placeholder="Sponsor Username">
@@ -74,6 +83,7 @@
                                  </div>
                                  <div id="suggestUser"></div>
                               </div>
+                              @endif
 
                            </div>
                            <div class="row">

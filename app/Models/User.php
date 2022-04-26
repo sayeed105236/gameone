@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Questocat\Referral\Traits\UserReferral;
 
 class User extends Authenticatable
 {
+
     use HasApiTokens, HasFactory, Notifiable;
+    use UserReferral;
 
     /**
      * The attributes that are mass assignable.
@@ -39,6 +42,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    protected $appends = ['referral_link'];
 
     /**
      * The attributes that should be cast.
@@ -52,4 +56,19 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class,'sponsor');
     }
+
+
+/**
+ * A user has many referrals.
+ *
+ * @return \Illuminate\Database\Eloquent\Relations\HasMany
+ */
+public function referrals()
+{
+    return $this->hasMany(User::class, 'sponsor', 'id');
+}
+public function getReferralLinkAttribute()
+{
+    return $this->referral_link = route('register', ['ref' => $this->user_name]);
+}
 }

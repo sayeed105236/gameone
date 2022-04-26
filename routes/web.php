@@ -10,6 +10,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\AffilateController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +30,22 @@ Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\FrontendController::class, 'index'])->name('home')->middleware('auth');
+
+//User package
 Route::get('/home/buy_package/{id}', [App\Http\Controllers\FrontendController::class, 'buy_package'])->middleware('auth');
 Route::post('/home/buy_package/store', [App\Http\Controllers\FrontendController::class, 'store_package'])->name('buy-package')->middleware('auth');
+
+//user profile
+Route::get('/home/user-profile/{id}', [ProfileController::class, 'profile'])->middleware('auth');
+Route::post('/home/update-profile/store', [App\Http\Controllers\ProfileController::class, 'UpdateProfile'])->name('update-profile')->middleware('auth');
+Route::post('/home/user-password/change-password-store',[ProfileController::class,'changePassStore'])->name('change-password-store')->middleware('auth');
 Route::get('/home/my_asset/{id}', [App\Http\Controllers\FrontendController::class, 'my_asset'])->middleware('auth');
+
+//user fund transfer
 Route::get('/home/fund-transfer/{id}', [FrontendController::class, 'fund_transfer'])->middleware('auth');
 Route::post('/home/fund-transfer/store', [FrontendController::class, 'fund_transfer_store'])->name('fund-transfer')->middleware('auth');
 
-//user buy token
+//user buy/sell token
 Route::post('/home/buy_token/store', [FrontendController::class, 'store_buy_token'])->name('buy-token')->middleware('auth');
 Route::post('/home/sell_token/store', [FrontendController::class, 'store_sell_token'])->name('sell-token')->middleware('auth');
 //user payment
