@@ -2,6 +2,11 @@
 
 
 @section('user_content')
+<style>
+       .text-right{
+           text-align: right;
+       }
+   </style>
 
                   <div class="container">
               <h6>Available Amount: {{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</h6>
@@ -38,21 +43,21 @@
                         <input disabled type="text" class="form-control" style="color:#D98019; font-weight:100%;" value="{{$row->package_name}}" >
                           </div>
                             <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1" style="color:#D98019; font-weight:100%;">Price ($)</span>
+                            <span class="input-group-text text-right"  id="basic-addon1" style="color:#D98019;width: 70%; font-weight:100%;">Price ($)</span>
                             <input disabled type="text" class="form-control" value="{{$row->package_price}}" >
                               </div>
                               <div class="input-group mb-3">
-                              <span class="input-group-text" style="color:#D98019; font-weight:100%;" id="basic-addon1">Token
+                              <span class="input-group-text text-right" style="color:#D98019; width: 70%; font-weight:100%;" id="basic-addon1">Token
                                                                   Amount</span>
                               <input disabled type="text" class="form-control" value="{{$row->amount}}" >
                                 </div>
                                 <div class="input-group mb-3">
-                                <span class="input-group-text" style="color:#D98019; font-weight:100%;" id="basic-addon1">Duration
+                                <span class="input-group-text text-right" style="color:#D98019; width: 70%; font-weight:100%;" id="basic-addon1">Duration
                                                                               (days)</span>
                                 <input disabled type="text" class="form-control" value="{{$row->duration}}" >
                                   </div>
                                   <div class="input-group mb-3">
-                                  <span class="input-group-text" style="color:#D98019; font-weight:100%;" id="basic-addon1">Buyer Token
+                                  <span class="input-group-text text-right" style="color:#D98019; width: 70%; font-weight:100%;" id="basic-addon1">Buyer Tok
                                                                                       Bonus (%)</span>
                                   <input disabled type="text" class="form-control" value="{{$row->daily_buyer_token}}" >
                                     </div>

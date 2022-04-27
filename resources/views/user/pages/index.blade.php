@@ -727,6 +727,7 @@
            $total = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Deposit')->sum('amount');
             $expenses = -(App\Models\AddMoney::where('user_id',Auth::id())->where('type','Debit')->sum('amount'));
              $transfer = -(App\Models\AddMoney::where('user_id',Auth::id())->where('method','Transfer Money')->where('type','Debit')->sum('amount'));
+             $withdraw= App\Models\Withdraw::where('user_id',Auth::id())->sum('amount');
 
             ?>
              <form class="col-lg-12" style="margin-bottom: 13%;">
@@ -752,7 +753,7 @@
                  <div class="form-group mb-3" style="margin-top: -10px;">
                      <div class="input-group pt-2">
                          <span style="width: 50%;" class="input-group-text" id="basic-addon4">Withdraw</span>
-                         <input type="text" class="form-control col-lg-8" placeholder="" value=" $ 0.00" aria-label="Recipient's username" aria-describedby="basic-addon3" readonly>
+                         <input type="text" class="form-control col-lg-8" placeholder="" value=" $ {{$withdraw}}" aria-label="Recipient's username" aria-describedby="basic-addon3" readonly>
                      </div>
 
                  </div>
@@ -775,7 +776,7 @@
                   </div>
                </div>
                <div class="card-body">
-              <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/GameumO?ref_src=twsrc%5Etfw">Tweets by GameumO</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <a class="twitter-timeline" data-height="500" data-theme="dark" href="https://twitter.com/GameumO?ref_src=twsrc%5Etfw">Tweets by GameumO</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 
