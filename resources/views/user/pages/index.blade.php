@@ -2,7 +2,11 @@
 
 
 @section('user_content')
-
+<style>
+       .text-right{
+           text-align: right;
+       }
+   </style>
 <div class="row">
    <div class="col-lg-12">
          <div class="row align-items-center mb-4">
@@ -135,10 +139,10 @@
                            <div class="card-body iq-extra">
                               <div class="d-flex justify-content-between">
                                  <div class="header-title">
-                                    <p class="fs-6 ">Buy</p>
+                                    <p class="fs-6 ">Add Fund</p>
                                  </div>
                                  <div class="header-title">
-                                    <p class="fs-6">Sell</p>
+                                    <p class="fs-6">Withdraw</p>
                                  </div>
                               </div>
                               <select class="form-select mb-3" aria-label="Default select example">
@@ -295,39 +299,39 @@
                           <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                           <div class="form-group mb-3">
                              <div class="input-group pt-1">
-                                <span class="input-group-text" >Avl. Balance ($)</span>
+                                <span style="width: 60%;" class="input-group-text" >Avl. Balance ($)</span>
                                 <input type="text" disabled class="form-control col-lg-8" value="{{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}" >
                              </div>
                           </div>
                           <div class="form-group mb-3">
-                             <div class="input-group pt-2">
-                                <span class="input-group-text" >Price/Token ($)</span>
+                             <div class="input-group pt-1">
+                                <span style="width: 60%;" class="input-group-text" >Price /Token ($)</span>
                                 <input type="text" disabled class="form-control col-lg-8" value="{{$data['settings']->token_convert_rate}}" >
                              </div>
 
                           </div>
                           <div class="form-group mb-3">
                              <div class="input-group pt-1">
-                                <span class="input-group-text" >Quantity (G1)</span>
+                                <span style="width: 60%;" class="input-group-text" >Quantity (G1)</span>
                                 <input type="number" onchange="calculate()" class="form-control col-lg-8" id="amount" name="quantity"  required>
                              </div>
                           </div>
                           <div class="form-group mb-3">
-                             <div class="input-group pt-2">
-                                <span class="input-group-text" >Total Value ($)</span>
+                             <div class="input-group pt-1">
+                                <span style="width: 60%;" class="input-group-text" >Total Values ($)</span>
                                 <input type="text" id="total_value" readonly class="form-control col-lg-8" name="total_value"  required>
                              </div>
 
                           </div>
                           <div class="form-group mb-3">
-                             <div class="input-group pt-2">
-                                <span class="input-group-text" >Buying Fee (%)</span>
+                             <div class="input-group pt-1">
+                                <span style="width: 60%;" class="input-group-text" >Buying Fees (%)</span>
                                 <input type="text" readonly class="form-control col-lg-8" value="{{$data['settings']->buying_commission}}">
                              </div>
                           </div>
                           <div class="form-group mb-3">
-                             <div class="input-group pt-2">
-                                <span class="input-group-text">Payable ($)</span>
+                             <div class="input-group pt-1">
+                                <span style="width: 60%;" class="input-group-text">Payable ($)</span>
                                 <input type="text" readonly id="payable" name="payable" class="form-control col-lg-8"  required>
                              </div>
                           </div>
@@ -363,41 +367,41 @@
 
                             <div class="form-group mb-3">
                                <div class="input-group pt-1">
-                                  <span class="input-group-text" >Avl. Balance (Token)</span>
-                                  <input type="text" disabled class="form-control col-lg-8" value="{{$data['sum_deposit_bonus'] ? number_format((float)$data['sum_deposit_bonus'], 2, '.', '') : '00.00'}}" >
+                                  <span style="width: 60%;" class="input-group-text" >Avl. Bal (Token)</span>
+                                  <input type="text" disabled class="form-control col-lg-8 text-right" value="{{$data['sum_deposit_bonus'] ? number_format((float)$data['sum_deposit_bonus'], 2, '.', '') : '00.00'}}" >
                                </div>
                             </div>
                             <div class="form-group mb-3">
-                               <div class="input-group pt-2">
-                                  <span class="input-group-text" >Price/Token ($)</span>
-                                  <input type="text" disabled class="form-control col-lg-8" value="{{$data['settings']->token_convert_rate}}" >
+                               <div class="input-group pt-1">
+                                  <span style="width: 60%;" class="input-group-text" >Price/Token ($)</span>
+                                  <input type="text" disabled class="form-control col-lg-8 text-right" value="{{$data['settings']->token_convert_rate}}" >
                                </div>
 
                             </div>
                             <div class="form-group mb-3">
                                <div class="input-group pt-1">
-                                  <span class="input-group-text" >Quantity (G1)</span>
-                                  <input type="number" onchange="calculate2()" class="form-control col-lg-8" id="amount2" name="quantity"  required>
+                                  <span style="width: 60%;" class="input-group-text" >Quantity (G1)</span>
+                                  <input type="number" onchange="calculate2()" class="form-control col-lg-8 text-right" id="amount2" name="quantity"  required>
                                </div>
                             </div>
 
                             <div class="form-group mb-3">
-                               <div class="input-group pt-2">
-                                  <span class="input-group-text" >Total Value ($)</span>
-                                  <input type="text" readonly id="total_value2"  class="form-control col-lg-8" name="total_value"  required>
+                               <div class="input-group pt-1">
+                                  <span style="width: 60%;" class="input-group-text" >Total Values ($)</span>
+                                  <input type="text" readonly id="total_value2"  class="form-control col-lg-8 text-right" name="total_value"  required>
                                </div>
 
                             </div>
                             <div class="form-group mb-3">
-                               <div class="input-group pt-2">
-                                  <span class="input-group-text" >Selling Fee (%)</span>
-                                  <input type="text" disabled class="form-control col-lg-8" value="{{$data['settings']->selling_commission}}">
+                               <div class="input-group pt-1">
+                                  <span style="width: 60%;" class="input-group-text" >Selling Fees (%)</span>
+                                  <input type="text" disabled class="form-control col-lg-8 text-right" value="{{$data['settings']->selling_commission}}">
                                </div>
                             </div>
                             <div class="form-group mb-3">
-                               <div class="input-group pt-2">
-                                  <span class="input-group-text">Get Cash ($)</span>
-                                  <input type="text" readonly id="payable2" name="payable" class="form-control col-lg-8"  required>
+                               <div class="input-group pt-1">
+                                  <span style="width: 60%;" class="input-group-text">Get Cash ($)</span>
+                                  <input type="text" readonly id="payable2" name="payable" class="form-control col-lg-8 text-right"  required>
                                </div>
                             </div>
                            <div class="text-center">
@@ -426,7 +430,7 @@
                         <div class="col-md-6">
                            <div class="card bg-soft-secondary align-items-center shadow-none mb-lg-0 pt-4">
                               <div class="avatar bg-secondary p-2 mb-2">
-                                 <svg width="50" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <svg width="50" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                                  <path d="M33.4767 40.8511H12.997C12.5855 40.8511 12.3502 40.3818 12.5963 40.052L34.1225 11.207C34.4103 10.8214 35.0233 11.0249 35.0233 11.506V30.7766C35.0233 31.0527 35.2471 31.2766 35.5233 31.2766H55.9584C56.3779 31.2766 56.6109 31.762 56.3486 32.0893L34.8669 58.8895C34.5714 59.2581 33.9767 59.0492 33.9767 58.5768V41.3511C33.9767 41.0749 33.7529 40.8511 33.4767 40.8511Z" stroke="white"/>
                                  </svg>
                               </div>
@@ -706,64 +710,75 @@
    </div>
    <div class="col-lg-4">
       <div class="row">
-         <div class="col-lg-12">
-               <div class="card">
-                  <div class="card-header">
-                     <div class="input-group search-input">
-                  <input type="search" class="form-control form-control-lg" placeholder="Search BTS/ETH">
-               </div>
-                  </div>
-                  <div class="card-body d-flex align-items-center justify-content-center">
-                     <img src="{{asset('assets/images/coins/14.png')}}" class="img-fluid p-0 w-75" alt="img60">
-                  </div>
-               </div>
+        <div class="col-lg-12">
+     <div class="card">
+         <div class="card-header d-flex justify-content-between flex-wrap">
+             <div class="header-title ">
+                 <h5 class="card-title">Account Summary</h5>
+             </div>
          </div>
+
+
+
+
+
+         <div class="card-body">
+           <?php
+           $total = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Deposit')->sum('amount');
+            $expenses = -(App\Models\AddMoney::where('user_id',Auth::id())->where('type','Debit')->sum('amount'));
+             $transfer = -(App\Models\AddMoney::where('user_id',Auth::id())->where('method','Transfer Money')->where('type','Debit')->sum('amount'));
+
+            ?>
+             <form class="col-lg-12" style="margin-bottom: 13%;">
+                 <div class="form-group mb-3">
+                     <div class="input-group pt-1">
+                         <span style="width: 50%;" class="input-group-text" id="basic-addon3">Total Fund</span>
+                         <input type="text" class="form-control col-lg-8" placeholder="" value=" $ {{$total}}" aria-label="Recipient's username" aria-describedby="basic-addon3" readonly>
+                     </div>
+                 </div>
+                 <div class="form-group mb-3" style="margin-top: -10px;">
+                     <div class="input-group pt-2">
+                         <span style="width: 50%;" class="input-group-text" id="basic-addon4">Expenses</span>
+                         <input type="text" class="form-control col-lg-8" placeholder="" value=" {{$expenses ? '$'.number_format((float)$expenses, 2, '.', '') : '$00.00'}}" aria-label="Recipient's username" aria-describedby="basic-addon3" readonly>
+                     </div>
+
+                 </div>
+                 <div class="form-group mb-3" style="margin-top: -10px;">
+                     <div class="input-group pt-2">
+                         <span style="width: 50%;" class="input-group-text" id="basic-addon6">Transfer</span>
+                         <input type="text" class="form-control col-lg-8" placeholder="" value=" $ {{$transfer}}" aria-label="Recipient's username" aria-describedby="basic-addon3" readonly>
+                     </div>
+                 </div>
+                 <div class="form-group mb-3" style="margin-top: -10px;">
+                     <div class="input-group pt-2">
+                         <span style="width: 50%;" class="input-group-text" id="basic-addon4">Withdraw</span>
+                         <input type="text" class="form-control col-lg-8" placeholder="" value=" $ 0.00" aria-label="Recipient's username" aria-describedby="basic-addon3" readonly>
+                     </div>
+
+                 </div>
+                 <div class="form-group mb-3" style="margin-top: -10px;">
+                     <div class="input-group pt-2">
+                         <span style="width: 50%;" class="input-group-text" id="basic-addon6">Available</span>
+                         <input type="text" class="form-control col-lg-8" placeholder="" value="{{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}" aria-label="Recipient's username" aria-describedby="basic-addon3" readonly>
+                     </div>
+                 </div>
+
+             </form>
+         </div>
+     </div>
+ </div>
          <div class="col-lg-12">
             <div class="card">
                <div class="card-header">
                   <div class="header-title">
-                        <h4 class="card-title">History</h4>
+                        <h4 class="card-title">Twittes</h4>
                   </div>
                </div>
                <div class="card-body">
-                  <ul class="list-inline m-0 p-0">
-                     <li class="d-flex  align-items-center pt-3">
-                        <div class="d-flex justify-content-between rounded-pill"><img src="{{asset('assets/images/coins/01.png')}}" class="img-fluid avatar avatar-40 avatar-rounded" alt="img6">
-                           <div class="ms-3 flex-grow-1">
-                           <h5 class="mb-2">Bitcoin</h5>
-                           <p class=" text-success mb-2">+$10,00</p>
-                           <p class="fs-6">Bitcoins Evolution™. 234000 Satisfied Customers From 107 Countries.</p>
-                           </div>
-                           <div class="">
-                              <p>11/02/21</p>
-                           </div>
-                        </div>
-                     </li>
-                     <li class="d-flex  align-items-center pt-3">
-                        <div class="d-flex justify-content-between rounded-pill"><img src="{{asset('assets/images/coins/09.png')}}" class="img-fluid avatar avatar-40 avatar-rounded" alt="img7">
-                           <div class="ms-3 flex-grow-1">
-                           <h5 class="mb-2">Ethereum</h5>
-                           <p class=" text-danger mb-2">-$50,00</p>
-                           <p class="fs-6">Ethereum is a decentralized, blockchain with smart contract functionality</p>
-                           </div>
-                           <div class="">
-                              <p>11/02/21</p>
-                           </div>
-                        </div>
-                     </li>
-                     <li class="d-flex  align-items-center pt-3">
-                        <div class="d-flex justify-content-between rounded-pill"><img src="{{asset('assets/images/coins/06.png')}}" class="img-fluid avatar avatar-40 avatar-rounded" alt="img8">
-                           <div class="ms-3 flex-grow-1">
-                           <h5 class="mb-2">Litecoin</h5>
-                           <p class=" text-danger mb-2">-$50,00</p>
-                           <p class="fs-6">Litecoin is a peer-to-peer cryptocurrency and open-source software</p>
-                           </div>
-                           <div class="">
-                              <p>11/02/21</p>
-                           </div>
-                        </div>
-                     </li>
-                  </ul>
+              <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/GameumO?ref_src=twsrc%5Etfw">Tweets by GameumO</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
                </div>
             </div>
          </div>

@@ -11,6 +11,7 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\AffilateController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,14 +33,22 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\FrontendController::class, 'index'])->name('home')->middleware('auth');
 
 //User package
-Route::get('/home/buy_package/{id}', [App\Http\Controllers\FrontendController::class, 'buy_package'])->middleware('auth');
-Route::post('/home/buy_package/store', [App\Http\Controllers\FrontendController::class, 'store_package'])->name('buy-package')->middleware('auth');
+Route::get('/home/buy_package/{id}', [FrontendController::class, 'buy_package'])->middleware('auth');
+Route::post('/home/buy_package/store', [FrontendController::class, 'store_package'])->name('buy-package')->middleware('auth');
 
 //user profile
 Route::get('/home/user-profile/{id}', [ProfileController::class, 'profile'])->middleware('auth');
-Route::post('/home/update-profile/store', [App\Http\Controllers\ProfileController::class, 'UpdateProfile'])->name('update-profile')->middleware('auth');
+Route::post('/home/update-profile/store', [ProfileController::class, 'UpdateProfile'])->name('update-profile')->middleware('auth');
 Route::post('/home/user-password/change-password-store',[ProfileController::class,'changePassStore'])->name('change-password-store')->middleware('auth');
-Route::get('/home/my_asset/{id}', [App\Http\Controllers\FrontendController::class, 'my_asset'])->middleware('auth');
+Route::get('/home/my_asset/{id}', [FrontendController::class, 'my_asset'])->middleware('auth');
+//Usr payment method
+Route::get('/home/user-payment-method/{id}', [UserPaymentController::class, 'index'])->middleware('auth');
+Route::post('/home/user-payment-method/store', [UserPaymentController::class, 'store'])->name('user-payment-method')->middleware('auth');
+Route::post('/home/user-payment-method/update', [UserPaymentController::class, 'update'])->name('user-payment-method-update')->middleware('auth');
+
+// User Withdraw
+Route::get('/home/withdraw/{id}', [AddMoneyController::class, 'withdraw_manage'])->middleware('auth');
+Route::post('/home/withdraw/store', [AddMoneyController::class, 'withdraw_store'])->name('withdraw-store')->middleware('auth');
 
 //user fund transfer
 Route::get('/home/fund-transfer/{id}', [FrontendController::class, 'fund_transfer'])->middleware('auth');
@@ -85,7 +94,10 @@ Route::get('/admin/account-info/delete/{id}', [AdminPaymentController::class, 'a
 Route::get('/admin/add-money/requests', [AdminShowPaymentController::class,'Manage'])->name('deposit-manage')->middleware('is_admin');
 Route::get('/admin/add-money-approve/{id}', [AdminShowPaymentController::class,'approve'])->middleware('is_admin');
 Route::get('/admin/add-money-reject/{id}/{user_id}/{amount}', [AdminShowPaymentController::class,'rejected'])->middleware('is_admin');
-
+//admin withdraw Request
+Route::get('/admin/withdraw/requests', [AdminShowPaymentController::class,'ManageWithdraw'])->name('withdraw-manage')->middleware('is_admin');
+Route::get('/admin/withdraw-approve/{id}', [AdminShowPaymentController::class,'withdrawapprove'])->middleware('is_admin');
+Route::get('/admin/withdraw-reject/{id}/{user_id}/{amount}', [AdminShowPaymentController::class,'withdrawrejected'])->middleware('is_admin');
 // Settings Update
 Route::post('admin/token-rate/update', [SettingsController::class, 'token_rate_update'])->name('token-rate-update')->middleware('is_admin');
 Route::post('admin/ambassador/update', [SettingsController::class, 'ambassador_update'])->name('ambassador-update')->middleware('is_admin');

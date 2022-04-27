@@ -9,7 +9,7 @@
                     @include('sweetalert::alert')
                     <div class="card-body">
                         <h2 class="card-title">My Affilates</h2>
-                        <a class="btn btn-primary float-right" href="#" data-bs-toggle="modal" data-bs-target="#accountinfoadd">Add New User</a>
+                      
                         <hr>
                         <div class="bd-example table-responsive">
                                <table class="table table-bordered table-border">
