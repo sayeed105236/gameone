@@ -35,7 +35,8 @@ Route::get('/home', [App\Http\Controllers\FrontendController::class, 'index'])->
 //User package
 Route::get('/home/buy_package/{id}', [FrontendController::class, 'buy_package'])->middleware('auth');
 Route::post('/home/buy_package/store', [FrontendController::class, 'store_package'])->name('buy-package')->middleware('auth');
-
+//user transaction report
+Route::get('/home/transactions/{id}', [FrontendController::class, 'manage_transaction'])->middleware('auth');
 //user profile
 Route::get('/home/user-profile/{id}', [ProfileController::class, 'profile'])->middleware('auth');
 Route::post('/home/update-profile/store', [ProfileController::class, 'UpdateProfile'])->name('update-profile')->middleware('auth');

@@ -43,6 +43,7 @@ class AddMoneyController extends Controller
       $deposit->wallet_id= $request->payment_wallet_id;
       $deposit->method = 'Deposit';
       $deposit->type = 'Credit';
+      $deposit->description= 'Manual Deposit'
       $deposit->txn_id = $txn_id;
       $deposit->save();
 

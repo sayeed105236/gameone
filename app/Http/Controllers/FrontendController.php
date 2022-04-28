@@ -65,6 +65,7 @@ class FrontendController extends Controller
       $deduct->method = 'Purchased Package ' . $package_id->package_name;
       $deduct->type = 'Debit';
       $deduct->status = 'approve';
+      $deduct->description = 'Purchased Package ' . $package_id->package_name . ' for $' . $package_id->package_price;
       $deduct->save();
       $token_bonus = new TokenWallet();
       $token_bonus->user_id= $request->user_id;
@@ -230,6 +231,17 @@ class FrontendController extends Controller
         return back()->with('token_sell', 'Token Sell Successfully');
     }
 
+  }
+  public function manage_transaction($id)
+  {
+    $users= User::where('id',Auth::id())->first();
+    $data['sum_deposit']=AddMoney::where('user_id',Auth::id())->sum('amount');
+    $data['sum_deposit_token']=TokenWallet::where('user_id',Auth::id())->sum('amount');
+    $data['sum_deposit_bonus']=BonusWallet::where('user_id',Auth::id())->sum('amount');
+    $cashwallet_history= AddMoney::where('user_id',Auth::id())->get();
+    $tokenwallet_history= TokenWallet::where('user_id',Auth::id())->get();
+    $bonuswallet_history= BonusWallet::where('user_id',Auth::id())->get();
+    return view('user.pages.transactions',compact('users','data','cashwallet_history','tokenwallet_history','bonuswallet_history'));
   }
 
 }
