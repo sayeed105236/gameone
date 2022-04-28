@@ -232,55 +232,18 @@
                   </div>
                </div>
                <div class="col-lg-12">
+
                   <div class="card">
                      <div class="card-header d-flex justify-content-between flex-wrap">
                         <div class="header-title">
                            <h4 class="card-title mb-2">Market Overview</h4>
-                           <p class="mb-0">Pictorial monthly analytics of market.</p>
+                           <!-- <p class="mb-0">Pictorial monthly analytics of market.</p> -->
                         </div>
-                        <div class="d-flex align-items-center align-self-center">
-                           <div class="d-flex align-items-center">
-                              <div class="form-check active" >
-                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                 <label class="form-check-label" for="flexRadioDefault1">ETH
-                                 </label>
-                              </div>
-                           </div>
-                           <div class="d-flex align-items-center ms-3">
-                              <div class="form-check">
-                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                 <label class="form-check-label" for="flexRadioDefault2">XMR
-                                 </label>
-                              </div>
-                           </div>
-                           <div class="d-flex align-items-center ms-3">
-                              <div class="form-check">
-                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                                 <label class="form-check-label" for="flexRadioDefault3">LTC
-                                 </label>
-                              </div>
-                           </div>
-                           <div class="d-flex align-items-center ms-3">
-                              <div class="form-check">
-                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
-                                 <label class="form-check-label" for="flexRadioDefault4">XMR
-                                 </label>
-                              </div>
-                           </div>
-                        </div>
+
                      </div>
-                     <div class="dropdown ms-4">
-                        <a class="btn btn-primary dropdown-toggle mt-2" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                           Weekly (2020)
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                           <li><a class="dropdown-item" href="#">Weekly (2020)</a></li>
-                           <li><a class="dropdown-item" href="#">Monthly (2020)</a></li>
-                           <li><a class="dropdown-item" href="#">Today (2020)</a></li>
-                        </ul>
-                     </div>
+
                      <div class="card-body">
-                        <div id="apex-candlestick-chart"></div>
+                         <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script> <div  class="livecoinwatch-widget-3 w-100" lcw-base="USD" lcw-d-head="true" lcw-d-name="true" lcw-d-code="true" lcw-d-icon="true" lcw-color-tx="#ffffff" lcw-color-bg="#1f2434" lcw-border-w="1" ></div>
                      </div>
                   </div>
                </div>
