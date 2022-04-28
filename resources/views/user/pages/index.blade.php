@@ -7,6 +7,7 @@
            text-align: right;
        }
    </style>
+                        <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script> <div class="livecoinwatch-widget-5" lcw-base="USD" lcw-color-tx="#0693e3" lcw-marquee-1="coins" lcw-marquee-2="movers" lcw-marquee-items="30" ></div>
 <div class="row">
    <div class="col-lg-12">
          <div class="row align-items-center mb-4">
@@ -50,7 +51,9 @@
                  </div>
                  </div>
                  @endif
+
                   <div class="card-body ">
+
                      <div class="d-flex justify-content-between flex-wrap">
                         <div class="d-flex">
                            <img src="{{asset('assets/images/coins/06.png')}}" class="img-fluid avatar avatar-40 avatar-rounded" alt="img8">
