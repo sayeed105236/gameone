@@ -71,7 +71,7 @@ class DailyBonus extends Command
                     $bonus->amount= (($package->amount)*(($package->daily_buyer_token)/100)/2);
                     $bonus->method= 'Daily Bonus';
                     $bonus->type= 'Credit';
-                    $bonus->description= (($package->amount)*(($package->affilate_token)/100)/2). ' G1 Token ' . 'Daily Bonus for purchasing '. ' ' . $package->name;
+                    $bonus->description= (($package->amount)*(($package->daily_buyer_token)/100)/2). ' G1 Token ' . 'Daily Bonus for purchasing '. ' ' . $package->name;
                     $bonus->save();
 
                     $bonus= new TokenWallet();
@@ -80,26 +80,26 @@ class DailyBonus extends Command
                     $bonus->amount= (($package->amount)*(($package->daily_buyer_token)/100)/2);
                     $bonus->method= 'Daily Bonus';
                     $bonus->type= 'Credit';
-                    $bonus->description= (($package->amount)*(($package->affilate_token)/100)/2). ' G1 Token ' . 'Daily Bonus for purchasing '. ' ' . $package->name;
+                    $bonus->description= (($package->amount)*(($package->daily_buyer_token)/100)/2). ' G1 Token ' . 'Daily Bonus for purchasing '. ' ' . $package->name;
                     $bonus->save();
 
-
+                    $refer_bonus_amount= (($package->amount)*(($package->daily_buyer_token)/100)/2)*(($package->affilate_token)/100);
                     $sponsor_bonus= new BonusWallet();
                     $sponsor_bonus->user_id= $sponsor_id->sponsor;
 
-                    $sponsor_bonus->amount= (($package->amount)*(($package->daily_buyer_token)/100)/2);
+                    $sponsor_bonus->amount= $refer_bonus_amount;
                     $sponsor_bonus->method= 'Daily Bonus';
                     $sponsor_bonus->type= 'Credit';
-                    $sponsor_bonus->description= (($package->amount)*(($package->affilate_token)/100)/2). ' G1 Token ' . 'Sponsor Bonus from '. ' ' . $sponsor_id->user_name;
+                    $sponsor_bonus->description= $refer_bonus_amount. ' G1 Token ' . 'Sponsor Bonus from '. ' ' . $sponsor_id->user_name;
                     $sponsor_bonus->save();
 
                     $bonus= new TokenWallet();
                     $bonus->user_id= $sponsor_id->sponsor;
 
-                    $bonus->amount= (($package->amount)*(($package->daily_buyer_token)/100)/2);
+                    $bonus->amount= $refer_bonus_amount;
                     $bonus->method= 'Daily Bonus';
                     $bonus->type= 'Credit';
-                    $bonus->description= (($package->amount)*(($package->affilate_token)/100)/2). ' G1 Token ' . 'Sponsor Bonus from package purchased by '. ' ' . $sponsor_id->user_name;
+                    $bonus->description= $refer_bonus_amount. ' G1 Token ' . 'Sponsor Bonus from package purchased by '. ' ' . $sponsor_id->user_name;
                     $bonus->save();
 
 
