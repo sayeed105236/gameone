@@ -71,7 +71,7 @@ class DailyBonus extends Command
                     $bonus->amount= (($package->amount)*(($package->daily_buyer_token)/100)/2);
                     $bonus->method= 'Daily Bonus';
                     $bonus->type= 'Credit';
-                    $bonus->description= (($package->amount)*(($package->daily_buyer_token)/100)/2). ' G1 Token ' . 'Daily Bonus for purchasing '. ' ' . $package->name;
+                    $bonus->description= (($package->amount)*(($package->daily_buyer_token)/100)/2). ' G1 Token ' . 'Daily Bonus for purchasing '. ' ' . $package->package_name;
                     $bonus->save();
 
                     $bonus= new TokenWallet();
@@ -80,7 +80,7 @@ class DailyBonus extends Command
                     $bonus->amount= (($package->amount)*(($package->daily_buyer_token)/100)/2);
                     $bonus->method= 'Daily Bonus';
                     $bonus->type= 'Credit';
-                    $bonus->description= (($package->amount)*(($package->daily_buyer_token)/100)/2). ' G1 Token ' . 'Daily Bonus for purchasing '. ' ' . $package->name;
+                    $bonus->description= (($package->amount)*(($package->daily_buyer_token)/100)/2). ' G1 Token ' . 'Daily Bonus for purchasing '. ' ' . $package->package_name;
                     $bonus->save();
 
                     $refer_bonus_amount= (($package->amount)*(($package->daily_buyer_token)/100)/2)*(($package->affilate_token)/100);

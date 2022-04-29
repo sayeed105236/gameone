@@ -742,7 +742,7 @@
                   </div>
                </div>
                <div class="card-body">
-            <a class="twitter-timeline" data-height="500" data-theme="dark" href="https://twitter.com/GameumO?ref_src=twsrc%5Etfw">Tweets by GameumO</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="500" href="https://twitter.com/MindChain1?ref_src=twsrc%5Etfw">Tweets by MindChain1</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 

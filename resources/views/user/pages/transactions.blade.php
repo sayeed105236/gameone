@@ -201,7 +201,7 @@
                                           <th scope="col"> CATEGORY</th>
                                              <th scope="col">RCVD FRM/PAY TO</th>
                                                 <th scope="col">DESCRIPTION</th>
-                                                   <th scope="col">AMOUNT/th>
+                                                   <th scope="col">AMOUNT</th>
 
                                        <th scope="col">TYPE</th>
 
