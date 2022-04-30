@@ -19,7 +19,7 @@
                                 @csrf
                                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
 
                           <?php
                           $account_info= App\Models\AccountInfo::all();
@@ -34,19 +34,19 @@
                         <option id="{{$payment->wallet_no}}" value="{{$payment->id}}">{{$payment->payment_way->payment_way}} ({{$payment->wallet_no}})</option>
                         @endforeach
                       </select>
-                        </div>
-                        <div class="mb-3">
+                        </div> -->
+                        <!-- <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Wallet or Account No.</label>
 
                             <input type="text" name="wallet_id" disabled id="wallet_id" class="form-control"required/>
-                        </div>
-                        <div class="mb-3">
+                        </div> -->
+                        <!-- <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Transaction ID</label>
 
                           <input type="text" name="txn_id" class="form-control" required/>
 
 
-                        </div>
+                        </div> -->
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Amount ($)</label>
                             <input type="round" class="form-control" name="amount" placeholder="Enter Amount" id="exampleInputEmail1" aria-describedby="emailHelp" required>
@@ -59,7 +59,7 @@
               </section>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Deposit</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Discard</button>
             </div>
               </form>

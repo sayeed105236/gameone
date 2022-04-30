@@ -32,22 +32,77 @@ class AddMoneyController extends Controller
       //     'method' => 'required',
       //
       // ]);
-      $user_id = $request->user_id;
-      $amount = $request->amount;
-      //$method=$request->method;
-      $txn_id = $request->txn_id;
-      $deposit = new AddMoney();
-      $deposit->user_id = $user_id;
-      $deposit->amount = $amount;
-      //$deposit->method=$method;
-      $deposit->wallet_id= $request->payment_wallet_id;
-      $deposit->method = 'Deposit';
-      $deposit->type = 'Credit';
-      $deposit->description= 'Manual Deposit'
-      $deposit->txn_id = $txn_id;
-      $deposit->save();
+      $client = new \GuzzleHttp\Client();
+      $token= '9S3WW3P-JRB43DN-PBCJ23E-P9W96H3';
+      $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      $description = substr(str_shuffle($chars), 0, 10);
+      $headers = [
+          // 'Authorization' => 'Bearer ' . $api_key,
+          'x-api-key'        => '9S3WW3P-JRB43DN-PBCJ23E-P9W96H3',
+          'Content-Type' => 'application/json',
 
-      return back()->with('Money_added', 'Your request is Accepted. Wait for Confirmation!!');
+
+
+      ];
+      $body= [
+        "price_amount"=> 1,
+        "price_currency"=> "usd",
+        "pay_currency"=> "btc",
+        "ipn_callback_url"=> "https://nowpayments.io",
+        "order_id"=> "RGDBP-21314",
+        "order_description"=> "Apple Macbook Pro 2019 x 1",
+
+      ];
+
+
+
+      //Duplicate these three lines for calling other api
+
+      $payment = $client->request('POST','https://api.nowpayments.io/v1/invoice', [
+              'headers' => $headers,
+              'json' => [
+
+                "price_amount"=> $request['amount'],
+                "price_currency"=> "usd",
+                "pay_currency"=> "btc",
+                "ipn_callback_url"=> "https://nowpayments.io",
+                "order_id"=> $description,
+                "order_description"=> "Deposit",
+                
+            ]
+
+
+
+
+         ]);
+
+
+    $payment=$payment->getBody()->getContents();
+
+
+
+
+    $data = json_decode($payment, true);
+    return redirect($data['invoice_url']);
+
+
+
+      // $user_id = $request->user_id;
+      // $amount = $request->amount;
+      // //$method=$request->method;
+      // $txn_id = $request->txn_id;
+      // $deposit = new AddMoney();
+      // $deposit->user_id = $user_id;
+      // $deposit->amount = $amount;
+      // //$deposit->method=$method;
+      // $deposit->wallet_id= $request->payment_wallet_id;
+      // $deposit->method = 'Deposit';
+      // $deposit->type = 'Credit';
+      // $deposit->description= 'Manual Deposit';
+      // $deposit->txn_id = $txn_id;
+      // $deposit->save();
+
+      // return back()->with('Money_added', 'Your request is Accepted. Wait for Confirmation!!');
   }
   public function withdraw_manage($id)
   {
