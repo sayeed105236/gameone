@@ -55,7 +55,8 @@ class AddMoneyController extends Controller
 
                 "price_amount"=> $request['amount']+  $request['amount']*(10/100),
                 "price_currency"=> "usd",
-                "pay_currency"=> "usdtbsc",
+                //"pay_currency"=> "usdtbsc",
+                  "pay_currency"=> $request['pay_currency'],
                 "ipn_callback_url"=> "https://nowpayments.io",
                 "order_id"=> $description,
                 "order_description"=> "Deposit",

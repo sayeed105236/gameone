@@ -48,6 +48,20 @@
 
                         </div> -->
                         <div class="mb-3">
+
+
+                           <label for="email-id-column">Select Currency<span
+                                   class="text-danger">*</span></label>
+                        <select id="DestinationOptions" name="pay_currency" class="form-select" aria-label="Default select example" required>
+                            <option label="Select Currency"></option>
+
+
+                        <option  value="usdtbsc">USDTBSC</option>
+                        <option  value="bnbbsc">BNBBSC</option>
+
+                      </select>
+                        </div>
+                        <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Amount ($)</label>
                             <input type="round" class="form-control" name="amount" placeholder="Enter Amount" id="exampleInputEmail1" aria-describedby="emailHelp" required>
 
