@@ -55,15 +55,12 @@ class AddMoneyController extends Controller
 
                 "price_amount"=> $request['amount'],
                 "price_currency"=> "usd",
-                "pay_currency"=> "usdt",
+                "pay_currency"=> "usdtbsc",
                 "ipn_callback_url"=> "https://nowpayments.io",
                 "order_id"=> $description,
                 "order_description"=> "Deposit",
 
             ]
-
-
-
 
          ]);
 
@@ -89,7 +86,7 @@ class AddMoneyController extends Controller
       // $deposit->wallet_id= $request->payment_wallet_id;
       $deposit->method = 'Deposit';
       $deposit->type = 'Credit';
-      $deposit->description= 'Automatic Deposit';
+      $deposit->description= 'Deposit by Now Payments';
       $deposit->txn_id = $description;
       $deposit->save();
 
