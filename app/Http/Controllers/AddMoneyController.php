@@ -44,15 +44,6 @@ class AddMoneyController extends Controller
 
 
       ];
-      $body= [
-        "price_amount"=> 1,
-        "price_currency"=> "usd",
-        "pay_currency"=> "btc",
-        "ipn_callback_url"=> "https://nowpayments.io",
-        "order_id"=> "RGDBP-21314",
-        "order_description"=> "Apple Macbook Pro 2019 x 1",
-
-      ];
 
 
 
@@ -64,11 +55,11 @@ class AddMoneyController extends Controller
 
                 "price_amount"=> $request['amount'],
                 "price_currency"=> "usd",
-                "pay_currency"=> "btc",
+                "pay_currency"=> "usdt",
                 "ipn_callback_url"=> "https://nowpayments.io",
                 "order_id"=> $description,
                 "order_description"=> "Deposit",
-                
+
             ]
 
 
@@ -87,22 +78,22 @@ class AddMoneyController extends Controller
 
 
 
-      // $user_id = $request->user_id;
-      // $amount = $request->amount;
-      // //$method=$request->method;
+      $user_id = $request->user_id;
+      $amount = $request->amount;
+      //$method=$request->method;
       // $txn_id = $request->txn_id;
-      // $deposit = new AddMoney();
-      // $deposit->user_id = $user_id;
-      // $deposit->amount = $amount;
-      // //$deposit->method=$method;
+      $deposit = new AddMoney();
+      $deposit->user_id = $user_id;
+      $deposit->amount = $amount;
+      //$deposit->method=$method;
       // $deposit->wallet_id= $request->payment_wallet_id;
-      // $deposit->method = 'Deposit';
-      // $deposit->type = 'Credit';
-      // $deposit->description= 'Manual Deposit';
-      // $deposit->txn_id = $txn_id;
-      // $deposit->save();
+      $deposit->method = 'Deposit';
+      $deposit->type = 'Credit';
+      $deposit->description= 'Automatic Deposit';
+      $deposit->txn_id = $description;
+      $deposit->save();
 
-      // return back()->with('Money_added', 'Your request is Accepted. Wait for Confirmation!!');
+      return back()->with('Money_added', 'Successfully Added Funds!!');
   }
   public function withdraw_manage($id)
   {
