@@ -53,7 +53,7 @@ class AddMoneyController extends Controller
               'headers' => $headers,
               'json' => [
 
-                "price_amount"=> $request['amount']*(10/100),
+                "price_amount"=> $request['amount']+  $request['amount']*(10/100),
                 "price_currency"=> "usd",
                 "pay_currency"=> "usdtbsc",
                 "ipn_callback_url"=> "https://nowpayments.io",
