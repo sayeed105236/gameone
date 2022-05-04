@@ -52,7 +52,11 @@
                                           <td >{{$loop->index+1}}</td>
                                            <td>{{$row->txn_id}}</td>
                                            <td>
+                                             @if($row->wallet_id != null)
                                             {{$row->merchant->wallet_no}}
+                                            @else
+                                            Now Payments
+                                            @endif
                                            </td>
                                            <td>{{$row->created_at}}</td>
                                            <td>{{$row->amount}}</td>

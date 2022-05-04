@@ -8,6 +8,7 @@ use Auth;
 use App\Models\AddMoney;
 use App\Models\WithdrawCommission;
 use App\Models\Withdraw;
+use App\Models\NowPayment;
 class AddMoneyController extends Controller
 {
   public function __construct()
@@ -57,7 +58,7 @@ class AddMoneyController extends Controller
                 "price_currency"=> "usd",
                 //"pay_currency"=> "usdtbsc",
                   "pay_currency"=> $request['pay_currency'],
-                "ipn_callback_url"=> "https://nowpayments.io",
+                "ipn_callback_url"=> "https://gameum.bangolok.com/home",
                 "order_id"=> $description,
                 "order_description"=> "Deposit",
 
@@ -72,26 +73,85 @@ class AddMoneyController extends Controller
 
 
     $data = json_decode($payment, true);
+
+
+    $deposit = new AddMoney();
+    $deposit->payment_id= $data['id'];
+    $deposit->user_id = $request->user_id;
+    $deposit->amount = $request->amount;
+    //$deposit->method=$method;
+  
+    $deposit->method = 'Deposit';
+    $deposit->type = 'Credit';
+    $deposit->status = 'pending';
+    $deposit->description= 'Deposit by Now Payments';
+    $deposit->txn_id = $description;
+    $deposit->save();
+
+    $payment_status = $client->request('POST','https://api.nowpayments.io/v1/payment/?limit=10&page=0&sortBy=created_at&orderBy=asc', [
+            'headers' => $headers,
+            'json' => [
+
+              "price_amount"=> $request['amount']+  $request['amount']*(10/100),
+              "price_currency"=> "usd",
+              //"pay_currency"=> "usdtbsc",
+                "pay_currency"=> $request['pay_currency'],
+              "ipn_callback_url"=> "https://gameum.bangolok.com/home",
+              "order_id"=> $description,
+              "order_description"=> "Deposit",
+
+          ]
+
+       ]);
+
+
+  $payment_status=$payment_status->getBody()->getContents();
+
+
+
+
+  $data2 = json_decode($payment_status, true);
+
+
+
+    $payment_store= new NowPayment();
+    $payment_store->paymentID = $data2['payment_id'];
+    $payment_store->status= $data2['payment_status'];
+    $payment_store->pay_address= $data2['pay_address'];
+    $payment_store->price_amount =$data2['price_amount'];
+
+    $payment_store->price_currency =$data2['price_currency'];
+    $payment_store->pay_amount =$data2['pay_amount'];
+    $payment_store->amount_received =$data2['amount_received'];
+    $payment_store->pay_currency =$data2['pay_currency'];
+    $payment_store->order_id =$data2['order_id'];
+    $payment_store->save();
     return redirect($data['invoice_url']);
 
 
 
-      $user_id = $request->user_id;
-      $amount = $request->amount;
+
+
+
+
+
+      // $user_id = $request->user_id;
+      // $amount = $request->amount;
       //$method=$request->method;
       // $txn_id = $request->txn_id;
-      $deposit = new AddMoney();
-      $deposit->user_id = $user_id;
-      $deposit->amount = $amount;
-      //$deposit->method=$method;
+      // $deposit = new AddMoney();
+      // $deposit->user_id = $request->user_id;
+      // $deposit->amount = $request->amount;
+      // //$deposit->method=$method;
       // $deposit->wallet_id= $request->payment_wallet_id;
-      $deposit->method = 'Deposit';
-      $deposit->type = 'Credit';
-      $deposit->description= 'Deposit by Now Payments';
-      $deposit->txn_id = $description;
-      $deposit->save();
+      // $deposit->method = 'Deposit';
+      // $deposit->type = 'Credit';
+      // $deposit->status = 'Pending';
+      // $deposit->description= 'Deposit Manually';
+      // $deposit->txn_id = $request->txn_id;
+      // $deposit->save();
 
-      return back()->with('Money_added', 'Successfully Added Funds!!');
+      return back()->with('Money_added', 'Successfully Added Funds. Waiting for the Confirmation!!');
   }
   public function withdraw_manage($id)
   {
