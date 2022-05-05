@@ -61,7 +61,7 @@ class AddMoneyController extends Controller
                 //"pay_currency"=> "usdtbsc",
                   "pay_currency"=> $request['pay_currency'],
                 "ipn_callback_url"=> "https://gameum.bangolok.com/home/",
-                "success_url"=> "http://127.0.0.1:4000/home/approve_fund/".$request['amount'].'/'. $description,
+                "success_url"=> "https://gameum.bangolok.com/home/approve_fund/".$request['amount'].'/'. $description,
                 "cancel_url"=> "https://gameum.bangolok.com/home",
                 "order_id"=> $description,
                 "order_description"=> "Deposit",
