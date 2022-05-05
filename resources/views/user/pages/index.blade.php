@@ -23,6 +23,15 @@
                  {{Session::get('token_sell')}}
                  </div>
                  </div>
+                 @elseif(Session::has('Money_added'))
+                 <div class="alert alert-success d-flex align-items-center" role="alert">
+                 <svg class="bi flex-shrink-0 me-2" width="24" height="24">
+                 <use xlink:href="#check-circle-fill" />
+                 </svg>
+                 <div>
+                 {{Session::get('Money_added')}}
+                 </div>
+                 </div>
                  @elseif(Session::has('token_buy'))
                  <div class="alert alert-success d-flex align-items-center" role="alert">
                  <svg class="bi flex-shrink-0 me-2" width="24" height="24">

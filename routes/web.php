@@ -60,6 +60,8 @@ Route::post('/home/buy_token/store', [FrontendController::class, 'store_buy_toke
 Route::post('/home/sell_token/store', [FrontendController::class, 'store_sell_token'])->name('sell-token')->middleware('auth');
 //user payment
 Route::get('/home/add-fund/{id}', [App\Http\Controllers\AddMoneyController::class, 'index'])->name('add-money')->middleware('auth');
+Route::get('/home/approve_fund/{amount}/{description}', [App\Http\Controllers\AddMoneyController::class, 'approveFund'])->middleware('auth');
+
 Route::post('/user/add-fund/store', [AddMoneyController::class,'Store'])->name('money-store')->middleware('auth');
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::post('/home/get-sponsor', [RegisterController::class,'getSponsor'])->name('get-sponsor');
