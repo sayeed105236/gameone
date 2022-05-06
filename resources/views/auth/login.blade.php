@@ -6,7 +6,15 @@
   <head>
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Gameone</title>
+      <?php
+      $company =App\Models\Company::first();
+       ?>
+         @if($company->company_name != null)
+           <title>{{$company->company_name}}</title>
+           @else
+    <title>Company Name</title>
+    @endif
+
       <!-- Favicon -->
       <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}" />
       <link rel="stylesheet" href="{{asset('assets/css/libs.min.css')}}">
@@ -27,6 +35,19 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="auth-form">
+                          <div class="text-center">
+                            @if($company->company_icon != null)
+                            <img
+                              src="{{asset("storage/Company/$company->company_image")}}"
+                              alt="image"
+
+                              width="100"
+
+                            />
+                            @else
+
+                            @endif
+                          </div>
                                 <h2 class="text-center mb-4">Sign In</h2>
                                 <form method="POST" action="{{ route('login') }}">
                                   @csrf
