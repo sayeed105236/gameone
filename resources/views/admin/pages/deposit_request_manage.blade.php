@@ -26,7 +26,8 @@
 
                     <div class="card-body">
                         <h2 class="card-title">User's request for add fund</h2>
-                        <a class="btn btn-primary float-right" href="#" data-bs-toggle="modal" data-bs-target="#paymenttypeadd">Direct Add Fund</a>
+                        <a class="btn btn-primary float-right" href="#" data-bs-toggle="modal" data-bs-target="#directaddfund">Direct Add Fund</a>
+                        @include('admin.modals.directfundaddmodal')
 
                         <hr>
 
@@ -54,7 +55,14 @@
                                          <td>{{$loop->index+1}}</td>
                                          <td>{{$row->user->user_name}}</td>
                                          <td>{{$row->txn_id}}</td>
-                                         <td>{{$row->merchant->wallet_no}}</td>
+                                         <td>
+                                           @if($row->wallet_id != null)
+                                           {{$row->merchant->wallet_no}}
+                                           @else
+                                           System
+                                           @endif
+
+                                         </td>
                                          <td>{{$row->amount}}</td>
                                          <td>{{$row->created_at}}</td>
                                          <td>
@@ -97,6 +105,38 @@
             </div>
         </div>
 
+        @push('scripts')
+        <script>
+        $("body").on("keyup", "#sponsor", function () {
+        //alert('success');
+            let searchData = $("#sponsor").val();
+            if (searchData.length > 0) {
+                $.ajax({
+                    type: 'POST',
+                    url: '{{route("get-users")}}',
+                    data: {search: searchData},
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function (result) {
+                        $('#suggestUser').html(result.success)
+                        console.log(result.data)
+                        // if (result.data) {
+                        //     $("#position").val("");
+                        //     $("#placement_id").val("");
+                        //     $("#position").removeAttr('disabled');
+                        // } else {
+                        //     $("#position").val("");
+                        //     $("#placement_id").val("");
+                        //     $('#position').prop('disabled', true);
+                        // }
+                    }
+                });
+            }
+            if (searchData.length < 1) $('#suggestUser').html("")
+        })
+
+
+        </script>
+      @endpush
 
 
 

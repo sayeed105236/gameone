@@ -34,14 +34,15 @@ class AddMoneyController extends Controller
       //
       // ]);
       $client = new \GuzzleHttp\Client();
-      //$token= '9S3WW3P-JRB43DN-PBCJ23E-P9W96H3';
-      $token= 'F2QJSJ9-B5YME5J-MW4WBJJ-2M4NSET';
+      $token= '9S3WW3P-JRB43DN-PBCJ23E-P9W96H3';
+      //$token= 'F2QJSJ9-B5YME5J-MW4WBJJ-2M4NSET';
 
       $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       $description = substr(str_shuffle($chars), 0, 10);
       $headers = [
           // 'Authorization' => 'Bearer ' . $api_key,
-          'x-api-key'        => 'F2QJSJ9-B5YME5J-MW4WBJJ-2M4NSET',
+          //'x-api-key'        => 'F2QJSJ9-B5YME5J-MW4WBJJ-2M4NSET',
+          'x-api-key'        => '9S3WW3P-JRB43DN-PBCJ23E-P9W96H3',
           'Content-Type' => 'application/json',
 
 
@@ -52,7 +53,7 @@ class AddMoneyController extends Controller
 
       //Duplicate these three lines for calling other api
 
-      $payment = $client->request('POST','https://api-sandbox.nowpayments.io/v1/invoice', [
+      $payment = $client->request('POST','https://api.nowpayments.io/v1/invoice', [
               'headers' => $headers,
               'json' => [
 
@@ -60,9 +61,9 @@ class AddMoneyController extends Controller
                 "price_currency"=> "usd",
                 //"pay_currency"=> "usdtbsc",
                   "pay_currency"=> $request['pay_currency'],
-                "ipn_callback_url"=> "https://gameum.bangolok.com/home/",
-                "success_url"=> "https://gameum.bangolok.com/home/approve_fund/".$request['amount'].'/'. $description,
-                "cancel_url"=> "https://gameum.bangolok.com/home",
+                "ipn_callback_url"=> "https://https://cads.cryptoads.work/home/",
+                "success_url"=> "https://https://cads.cryptoads.work/home/approve_fund/".$request['amount'].'/'. $description,
+                "cancel_url"=> "https://https://cads.cryptoads.work/home",
                 "order_id"=> $description,
                 "order_description"=> "Deposit",
 
@@ -80,6 +81,25 @@ class AddMoneyController extends Controller
 
 
     return redirect($data['invoice_url']);
+
+      return back()->with('Money_added', 'Successfully Added Funds. Waiting for the Confirmation!!');
+  }
+  public function StoreManual(Request $request)
+  {
+
+    $deposit = new AddMoney();
+
+    $deposit->user_id = Auth::id();
+    $deposit->amount = ($request->amount)-(($request->amount)*(10/100));
+    //$deposit->method=$method;
+    $deposit->wallet_id= $request->payment_wallet_id;
+
+    $deposit->method = 'Deposit';
+    $deposit->type = 'Credit';
+    $deposit->status = 'pending';
+    $deposit->description= 'Deposit Manually';
+    $deposit->txn_id = $request->txn_id;
+    $deposit->save();
 
       return back()->with('Money_added', 'Successfully Added Funds. Waiting for the Confirmation!!');
   }
@@ -153,4 +173,23 @@ class AddMoneyController extends Controller
 
 
   }
+    public function AdminAddMoney(Request $request)
+    {
+      $receiver_id= User::where('user_name',$request->user_id)->pluck('id')->first();
+      $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      $description = substr(str_shuffle($chars), 0, 10);
+      $deposit = new AddMoney();
+
+      $deposit->user_id =  $receiver_id;
+      $deposit->amount = $request->amount;
+      $deposit->received_from=Auth::id();
+
+      $deposit->method = 'Deposit';
+      $deposit->type = 'Credit';
+      $deposit->status = 'approve';
+      $deposit->description= 'Deposit by Admin';
+      $deposit->txn_id = $description;
+      $deposit->save();
+      return redirect()->route('home')->with('Money_added', 'Successfully Added Funds!!');
+    }
 }

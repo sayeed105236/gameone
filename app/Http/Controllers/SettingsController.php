@@ -7,6 +7,8 @@ use App\Models\TokenRate;
 use App\Models\Ambassador;
 use App\Models\TransferInfo;
 use App\Models\WithdrawCommission;
+use App\Models\Company;
+use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
 {
@@ -20,8 +22,9 @@ class SettingsController extends Controller
     $ambassaor= Ambassador::first();
     $transfer_info= TransferInfo::first();
     $withdraw_info= WithdrawCommission::first();
+    $company= Company::first();
 
-    return view('admin.pages.general_settings',compact('token_rate','ambassaor','transfer_info','withdraw_info'));
+    return view('admin.pages.general_settings',compact('token_rate','ambassaor','transfer_info','withdraw_info','company'));
   }
   public function token_rate_update(Request $request)
   {
@@ -69,6 +72,75 @@ class SettingsController extends Controller
 
     $withdraw_info->save();
       return back()->with('withdraw_updated', 'Withdraw Info Successfully Updated!!');
+  }
+  public function company_update(Request $request)
+  {
+
+
+    $filename=null;
+    $uploadedFile = $request->file('image1');
+    $oldfilename = $company['company_image'] ?? 'demo.jpg';
+
+    $oldfileexists = Storage::disk('public')->exists('Company/' . $oldfilename);
+
+    if ($uploadedFile !== null) {
+
+        if ($oldfileexists && $oldfilename != $uploadedFile) {
+            //Delete old file
+            Storage::disk('public')->delete('Company/' . $oldfilename);
+        }
+        $filename_modified = str_replace(' ', '_', $uploadedFile->getClientOriginalName());
+        $filename = time() . '_' . $filename_modified;
+
+        Storage::disk('public')->putFileAs(
+            'Company/',
+            $uploadedFile,
+            $filename
+        );
+
+        $data['image1'] = $filename;
+    } elseif (empty($oldfileexists)) {
+        throw new GeneralException('Company image not found!');
+        //return redirect()->back()->with(['flash_danger' => 'User image not found!']);
+        //file check in storage
+
+    }
+    $filename2=null;
+    $uploadedFile2 = $request->file('image2');
+    $oldfilename2 = $company['company_icon'] ?? 'demo.jpg';
+
+    $oldfileexists2 = Storage::disk('public')->exists('Company/' . $oldfilename2);
+
+    if ($uploadedFile2 !== null) {
+
+        if ($oldfileexists2 && $oldfilename2 != $uploadedFile2) {
+            //Delete old file
+            Storage::disk('public')->delete('Company/' . $oldfilename2);
+        }
+        $filename_modified2 = str_replace(' ', '_', $uploadedFile2->getClientOriginalName());
+        $filename2 = time() . '_' . $filename_modified2;
+
+        Storage::disk('public')->putFileAs(
+            'Company/',
+            $uploadedFile2,
+            $filename2
+        );
+
+        $data['image2'] = $filename2;
+    } elseif (empty($oldfileexists2)) {
+        throw new GeneralException('Company icon not found!');
+        //return redirect()->back()->with(['flash_danger' => 'User image not found!']);
+        //file check in storage
+
+    }
+
+    $company =Company::find($request->id);
+    $company->company_name=$request->company_name;
+    $company->company_image= $filename;
+    $company->company_icon= $filename2;
+
+    $company->save();
+      return back()->with('company_updated', 'Company Info Successfully Updated!!');
   }
 
 }

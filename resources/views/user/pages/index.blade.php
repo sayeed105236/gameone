@@ -255,7 +255,7 @@
                      </div>
 
                      <div class="card-body">
-                         <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script> <div  class="livecoinwatch-widget-3 w-100" lcw-base="USD" lcw-d-head="true" lcw-d-name="true" lcw-d-code="true" lcw-d-icon="true" lcw-color-tx="#ffffff" lcw-color-bg="#1f2434" lcw-border-w="1" ></div>
+                         <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script> <div class="livecoinwatch-widget-1" lcw-coin="BTC" lcw-base="USD" lcw-secondary="BTC" lcw-period="d" lcw-color-tx="#ffffff" lcw-color-pr="#58c7c5" lcw-color-bg="#1f2434" lcw-border-w="5" ></div>
                      </div>
                   </div>
                </div>
@@ -455,231 +455,7 @@
                </div> -->
             </div>
          </div>
-         <div class="col-lg-12">
-            <div class="card card-block card-stretch custom-scroll">
-               <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
-                  <div class="caption">
-                     <h4 class="font-weight-bold mb-2">Recent Trading Activities</h4>
-                     <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  </div>
-                  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                     <input type="checkbox" class="btn-check" id="btncheck1">
-                     <label class="btn btn-sm btn-secondary active rounded-start" for="btncheck1">Monthly</label>
 
-                     <input type="checkbox" class="btn-check" id="btncheck2">
-                     <label class="btn btn-sm btn-secondary " for="btncheck2">Weekly</label>
-
-                     <input type="checkbox" class="btn-check" id="btncheck3">
-                     <label class="btn btn-sm btn-secondary rounded-end" for="btncheck3">Today</label>
-                  </div>
-               </div>
-               <div class="card-body">
-                  <div class="table-responsive">
-                     <table class="table data-table mb-0">
-                        <thead>
-                           <tr>
-                              <th scope="col">Name</th>
-                              <th scope="col">Price</th>
-                              <th scope="col">24h %</th>
-                              <th scope="col">7d %</th>
-                              <th scope="col">Market Cap</th>
-                              <th scope="col">Volume(24th)</th>
-                              <th scope="col">Circulating</th>
-                              <th scope="col">Last 7 Days</th>
-                           </tr>
-                        </thead>
-                           <tbody>
-                              <tr class="white-space-no-wrap">
-                                 <td>
-                                    <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
-                                    Bitcoin BTC<a class="button btn-primary badge ms-2" type="button">Buy</a>
-                                 </td>
-                                 <td class="pe-2">$40,501.87</td>
-                                 <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
-                                    </svg>
-                                    6.93%
-                                 </td>
-                                 <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
-                                    </svg>
-                                    4.58%
-                                 </td>
-                                 <td>$123,456,789,159</td>
-                                 <td>$373,359,580,155<br>
-                                    <small class="ms-5">635,237 BTC</small>
-                                 </td>
-                                 <td class="ms-5">18,777,768 BTC</td>
-                                 <td>
-                                    <div class="d-flex justify-content-between">
-                                       <div id="sparklinechart-1"></div>
-                                       <div class="dropdown ms-4">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                                          </svg>
-                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                             <li><a class="dropdown-item" href="#">View Charts</a></li>
-                                             <li><a class="dropdown-item" href="#">View Markets</a></li>
-                                             <li><a class="dropdown-item" href="#">View Historical Data</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr class="white-space-no-wrap">
-                                 <td>
-                                       <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
-                                       Ethereum ETH<a class="button btn-primary badge ms-2" type="button">Buy</a>
-                                 </td>
-                                 <td class="pe-2">$2,796.60</td>
-                                 <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
-                                    </svg>
-                                    3.33%
-                                 </td>
-                                 <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
-                                    </svg>
-                                    15.45%
-                                 </td>
-                                 <td>$123,456,789,159</td>
-                                 <td>$373,359,580,155<br>
-                                    <small class="ms-5">635,237 BTC</small>
-                                 </td>
-                                 <td class="ms-5">18,777,768 BTC</td>
-                                 <td>
-                                    <div class="d-flex justify-content-between">
-                                       <div id="sparklinechart-2"></div>
-                                       <div class="dropdown ms-4">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                                          </svg>
-                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                             <li><a class="dropdown-item" href="#">View Charts</a></li>
-                                             <li><a class="dropdown-item" href="#">View Markets</a></li>
-                                             <li><a class="dropdown-item" href="#">View Historical Data</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr class="white-space-no-wrap">
-                                 <td>
-                                       <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
-                                       Monero XMR<a class="button btn-primary badge ms-2" type="button">Buy</a>
-                                 </td>
-                                 <td class="pe-2">$1.00</td>
-                                 <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
-                                    </svg>
-                                    0.01%
-                                 </td>
-                                 <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
-                                    </svg>
-                                    0.02%
-                                 </td>
-                                 <td>$123,456,789,159</td>
-                                 <td>$373,359,580,155<br>
-                                    <small class="ms-5">635,237 BTC</small>
-                                 </td>
-                                 <td class="ms-5">18,777,768 BTC</td>
-                                 <td>
-                                    <div class="d-flex justify-content-between">
-                                       <div id="sparklinechart-3"></div>
-                                       <div class="dropdown ms-4">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                                          </svg>
-                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                             <li><a class="dropdown-item" href="#">View Charts</a></li>
-                                             <li><a class="dropdown-item" href="#">View Markets</a></li>
-                                             <li><a class="dropdown-item" href="#">View Historical Data</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr class="white-space-no-wrap">
-                                 <td>
-                                       <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
-                                       Litecoin LTC<a class="button btn-primary badge ms-2" type="button">Buy</a>
-                                 </td>
-                                 <td class="pe-2">$40,501.87</td>
-                                 <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
-                                    </svg>
-                                    6.93%
-                                 </td>
-                                 <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
-                                    </svg>
-                                    4.58%
-                                 </td>
-                                 <td>$123,456,789,159</td>
-                                 <td>$373,359,580,155<br>
-                                    <small class="ms-5">635,237 BTC</small>
-                                 </td>
-                                 <td class="ms-5">18,777,768 BTC</td>
-                                 <td>
-                                    <div class="d-flex justify-content-between">
-                                       <div id="sparklinechart-4"></div>
-                                       <div class="dropdown ms-4">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                                          </svg>
-                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                             <li><a class="dropdown-item" href="#">View Charts</a></li>
-                                             <li><a class="dropdown-item" href="#">View Markets</a></li>
-                                             <li><a class="dropdown-item" href="#">View Historical Data</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr class="white-space-no-wrap">
-                                 <td>
-                                       <img src="{{asset('assets/images/coins/02.png')}}" class="img-fluid avatar avatar-30 avatar-rounded" alt="img23" />
-                                       Bitcoin BTC<a class="button btn-primary badge ms-2" type="button">Buy</a>
-                                 </td>
-                                 <td class="pe-2">$40,501.87</td>
-                                 <td class="text-success"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 0.5L7.4641 5H0.535898L4 0.5Z" fill="#00EC42"/>
-                                    </svg>
-                                    6.93%
-                                 </td>
-                                 <td class="text-danger"><svg width="10" height="8" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4.5L0.535898 0L7.4641 0L4 4.5Z" fill="#FF2E2E"/>
-                                    </svg>
-                                    4.58%
-                                 </td>
-                                 <td>$123,456,789,159</td>
-                                 <td>$373,359,580,155<br>
-                                    <small class="ms-5">635,237 BTC</small>
-                                 </td>
-                                 <td class="ms-5">18,777,768 BTC</td>
-                                 <td>
-                                    <div class="d-flex justify-content-between">
-                                       <div id="sparklinechart-5"></div>
-                                       <div class="dropdown ms-4">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="20" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                                          </svg>
-                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                             <li><a class="dropdown-item" href="#">View Charts</a></li>
-                                             <li><a class="dropdown-item" href="#">View Markets</a></li>
-                                             <li><a class="dropdown-item" href="#">View Historical Data</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                           </tbody>
-                     </table>
-                  </div>
-               </div>
-            </div>
-         </div>
 
       </div>
    </div>
@@ -758,7 +534,7 @@
                </div>
             </div>
          </div>
-         <div class="col-lg-12">
+         <!-- <div class="col-lg-12">
             <div class="card">
                <div class="card-header d-flex justify-content-between flex-wrap">
                   <div class="header-title">
@@ -846,9 +622,163 @@
             </div>
          </div>
       </div>
+      </div> -->
+   </div>
+</div>
+<div class="col-lg-12">
+   <div class="card card-block card-stretch custom-scroll">
+      <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+         <div class="caption">
+            <h4 class="font-weight-bold mb-2">Recent Transaction CashWallet</h4>
+
+         </div>
+
+      </div>
+      <div class="card-body">
+         <div class="table-responsive">
+            <table class="table data-table mb-0">
+               <thead>
+                  <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">Method</th>
+                     <th scope="col">Amount</th>
+                     <th scope="col">Type</th>
+                     <th scope="col">Description</th>
+
+                  </tr>
+               </thead>
+               <?php
+               $cashwallet_tr =App\Models\AddMoney::where('user_id',Auth::id())->latest()->take(10)->get();
+
+                ?>
+                  <tbody>
+                    @foreach($cashwallet_tr as $cr)
+                     <tr class="white-space-no-wrap">
+                       <td>{{$loop->index+1}} </td>
+                       <td>{{$cr->method}}</td>
+                       <td>{{$cr->amount}}$</td>
+                       <td>{{$cr->type}}</td>
+                       <td>
+                         @if($cr->description != null)
+
+                         {{$cr->description}}
+                         @else
+
+                         @endif
+
+                       </td>
+                     </tr>
+                     @endforeach
+
+                  </tbody>
+            </table>
+         </div>
       </div>
    </div>
 </div>
+<div class="col-lg-12">
+   <div class="card card-block card-stretch custom-scroll">
+      <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+         <div class="caption">
+            <h4 class="font-weight-bold mb-2">Recent Transaction Token Wallet</h4>
+
+         </div>
+
+      </div>
+      <div class="card-body">
+         <div class="table-responsive">
+            <table class="table data-table mb-0">
+               <thead>
+                  <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">Method</th>
+                     <th scope="col">Amount</th>
+                     <th scope="col">Type</th>
+                     <th scope="col">Description</th>
+
+                  </tr>
+               </thead>
+               <?php
+               $token_tr =App\Models\TokenWallet::where('user_id',Auth::id())->latest()->take(10)->get();
+
+                ?>
+                  <tbody>
+                    @foreach($token_tr as $cr)
+                     <tr class="white-space-no-wrap">
+                       <td>{{$loop->index+1}} </td>
+                       <td>{{$cr->method}}</td>
+                       <td>{{$cr->amount}}$</td>
+                       <td>{{$cr->type}}</td>
+                       <td>
+                         @if($cr->description != null)
+
+                         {{$cr->description}}
+                         @else
+
+                         @endif
+
+                       </td>
+                     </tr>
+                     @endforeach
+
+                  </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="col-lg-12">
+   <div class="card card-block card-stretch custom-scroll">
+      <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+         <div class="caption">
+            <h4 class="font-weight-bold mb-2">Recent Transaction Bonus Wallet</h4>
+
+         </div>
+
+      </div>
+      <div class="card-body">
+         <div class="table-responsive">
+            <table class="table data-table mb-0">
+               <thead>
+                  <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">Method</th>
+                     <th scope="col">Amount</th>
+                     <th scope="col">Type</th>
+                     <th scope="col">Description</th>
+
+                  </tr>
+               </thead>
+               <?php
+               $bonus_tr =App\Models\BonusWallet::where('user_id',Auth::id())->latest()->take(10)->get();
+
+                ?>
+                  <tbody>
+                    @foreach($bonus_tr as $cr)
+                     <tr class="white-space-no-wrap">
+                       <td>{{$loop->index+1}} </td>
+                       <td>{{$cr->method}}</td>
+                       <td>{{$cr->amount}}$</td>
+                       <td>{{$cr->type}}</td>
+                       <td>
+                         @if($cr->description != null)
+
+                         {{$cr->description}}
+                         @else
+
+                         @endif
+
+                       </td>
+                     </tr>
+                     @endforeach
+
+                  </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</div>
+
 
 @push('scripts')
 

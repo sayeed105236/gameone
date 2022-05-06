@@ -25,8 +25,10 @@
 
                     <div class="card-body">
                         <h4 class="card-title">Request Status for Add Fund</h4>
-                        <a class="btn btn-primary float-right" href="#" data-bs-toggle="modal" data-bs-target="#addfund">Add Request</a>
+                        <a class="btn btn-primary float-right" href="#" data-bs-toggle="modal" data-bs-target="#addfund">Pay Automatically</a>
+                        <a class="btn btn-primary float-right" href="#" data-bs-toggle="modal" data-bs-target="#addfund2">Pay Manually</a>
                         @include('user.modals.addfundmodal')
+                          @include('user.modals.addfundmodal2')
                         <hr>
                         <h6>Available Balance: {{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</h6>
 
@@ -53,7 +55,8 @@
                                            <td>{{$row->txn_id}}</td>
                                            <td>
                                              @if($row->wallet_id != null)
-                                            {{$row->merchant->wallet_no}}
+                                             Manually(
+                                            {{$row->merchant->wallet_no}})
                                             @else
                                             Now Payments
                                             @endif

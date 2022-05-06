@@ -28,6 +28,15 @@
         {{Session::get('ambassador_updated')}}
         </div>
         </div>
+        @elseif(Session::has('company_updated'))
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+         <svg class="bi flex-shrink-0 me-2" width="24" height="24">
+         <use xlink:href="#check-circle-fill" />
+         </svg>
+         <div>
+         {{Session::get('company_updated')}}
+         </div>
+         </div>
         @elseif(Session::has('transfer_updated'))
         <div class="alert alert-success d-flex align-items-center" role="alert">
          <svg class="bi flex-shrink-0 me-2" width="24" height="24">
@@ -58,14 +67,14 @@
                         <div class="bd-example">
           <ul class="nav nav-pills" data-toggle="slider-tab" id="myTab" role="tablist">
               <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="logo-tab" data-bs-toggle="tab" data-bs-target="#pills-logo1" type="button" role="tab" aria-controls="logo" aria-selected="true">Logo</button>
+                  <button class="nav-link active" id="logo-tab" data-bs-toggle="tab" data-bs-target="#pills-logo1" type="button" role="tab" aria-controls="logo" aria-selected="true">Company Details</button>
               </li>
-              <li class="nav-item" role="presentation">
+              <!-- <li class="nav-item" role="presentation">
                   <button class="nav-link" id="icon-tab" data-bs-toggle="tab" data-bs-target="#pills-icon1" type="button" role="tab" aria-controls="icon" aria-selected="false">Icon</button>
               </li>
               <li class="nav-item" role="presentation">
                   <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#pills-info1" type="button" role="tab" aria-controls="info" aria-selected="false">Info</button>
-              </li>
+              </li> -->
               <li class="nav-item" role="presentation">
                   <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#pills-withdraw-info1" type="button" role="tab" aria-controls="withdraw-info" aria-selected="false">Withdraw Info</button>
               </li>
@@ -83,12 +92,67 @@
               <div class="tab-pane fade show active" id="pills-logo1" role="tabpanel"
                   aria-labelledby="pills-logo-tab1">
                   <p>
-                    Logo
+                    <form action="{{route('company-update')}}" method="post" enctype="multipart/form-data">
+                      @csrf
+                      <input type="hidden" name="id" value="{{$company->id}}">
+                  <section id="multiple-column-form">
+
+                      <div class="row">
+                          <div class="col-12">
+                              <div class="card">
+
+                                  <div class="card-body">
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Company Name	:</label>
+                                <input type="text" class="form-control" value="{{$company->company_name}}" name="company_name"  id="exampleInputEmail1" aria-describedby="emailHelp" >
+
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Company Logo (PNG):
+                                  <img
+                                    src="{{asset("storage/Company/$company->company_image")}}"
+                                    alt="image"
+                                    height="50"
+                                    width="50"
+
+                                  />
+                                </label>
+                                <input type="file" class="form-control"  name="image1"  id="company_image" aria-describedby="emailHelp" >
+
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Company Icon (SVG) :
+                                  <img
+                                    src="{{asset("storage/Company/$company->company_icon")}}"
+                                    alt="image"
+                                    height="50"
+                                    width="50"
+
+                                  />
+                                </label>
+                                <input type="file" class="form-control" name="image2"  id="company_icon" aria-describedby="emailHelp" >
+
+                            </div>
+
+
+
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                          <button type="submit" class="btn btn-primary">Update</button>
+
+                      </div>
+                        </div>
+
+                  </section>
+                    </form>
 
                   </p>
 
               </div>
-              <div class="tab-pane fade" id="pills-icon1" role="tabpanel"
+              <!-- <div class="tab-pane fade" id="pills-icon1" role="tabpanel"
                   aria-labelledby="pills-icon-tab1">
                   <p>
                   Icon
@@ -104,7 +168,7 @@
                   </p>
 
 
-              </div>
+              </div> -->
               <div class="tab-pane fade" id="pills-withdraw-info1" role="tabpanel"
                   aria-labelledby="pills-info-tab1">
                   <p>

@@ -63,6 +63,7 @@ Route::get('/home/add-fund/{id}', [App\Http\Controllers\AddMoneyController::clas
 Route::get('/home/approve_fund/{amount}/{description}', [App\Http\Controllers\AddMoneyController::class, 'approveFund'])->middleware('auth');
 
 Route::post('/user/add-fund/store', [AddMoneyController::class,'Store'])->name('money-store')->middleware('auth');
+Route::post('/user/add-fund/manually/store', [AddMoneyController::class,'StoreManual'])->name('money-store-manual')->middleware('auth');
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::post('/home/get-sponsor', [RegisterController::class,'getSponsor'])->name('get-sponsor');
 Route::post('/home/get-user', [HomeController::class,'getUser'])->name('get-users');
@@ -106,8 +107,12 @@ Route::post('admin/token-rate/update', [SettingsController::class, 'token_rate_u
 Route::post('admin/ambassador/update', [SettingsController::class, 'ambassador_update'])->name('ambassador-update')->middleware('is_admin');
 Route::post('admin/transfer-info/update', [SettingsController::class, 'transfer_info_update'])->name('transfer-info-update')->middleware('is_admin');
 Route::post('admin/withdraw-info/update', [SettingsController::class, 'withdraw_info_update'])->name('withdraw-info-update')->middleware('is_admin');
+Route::post('admin/company-info/update', [SettingsController::class, 'company_update'])->name('company-update')->middleware('is_admin');
 //all users
 Route::get('admin/user-lists', [HomeController::class, 'user_lists'])->name('admin-user-lists')->middleware('is_admin');
+
+//admin add money to user
+Route::post('admin/add-money/store', [AddMoneyController::class, 'AdminAddMoney'])->name('admin-add-money')->middleware('is_admin');
 
 //admin package settings
 
