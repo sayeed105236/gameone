@@ -61,7 +61,7 @@
                  </div>
                  @endif
 
-                  <div class="card-body ">
+                  <!-- <div class="card-body ">
 
                      <div class="d-flex justify-content-between flex-wrap">
                         <div class="d-flex">
@@ -137,10 +137,10 @@
                            </a>
                         </div>
                      </div>
-                  </div>
+                  </div> -->
                </div>
             </div>
-            <div class="col-xl-3">
+            <!-- <div class="col-xl-3">
                <div class="d-grid grid-3-auto gap-card">
                   <div class="dropdown">
                      <button class="btn btn-primary w-100" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
@@ -191,7 +191,7 @@
                      </ul>
                   </div>
                </div>
-            </div>
+            </div> -->
          </div>
    </div>
 </div>
