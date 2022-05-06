@@ -255,7 +255,7 @@
                      </div>
 
                      <div class="card-body">
-                         <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script> <div class="livecoinwatch-widget-1" lcw-coin="BTC" lcw-base="USD" lcw-secondary="BTC" lcw-period="d" lcw-color-tx="#ffffff" lcw-color-pr="#58c7c5" lcw-color-bg="#1f2434" lcw-border-w="5" ></div>
+                         <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script> <div class="livecoinwatch-widget-1 w-100" lcw-coin="BTC" lcw-base="USD" lcw-secondary="BTC" lcw-period="d" lcw-color-tx="#ffffff" lcw-color-pr="#58c7c5" lcw-color-bg="#1f2434" lcw-border-w="5" ></div>
                      </div>
                   </div>
                </div>
@@ -527,7 +527,7 @@
                   </div>
                </div>
                <div class="card-body">
-        <a class="twitter-timeline" data-height="500" href="https://twitter.com/MindChain1?ref_src=twsrc%5Etfw">Tweets by MindChain1</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="500" href="https://twitter.com/cadstoken?ref_src=twsrc%5Etfw">Tweets by cadstoken</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 
