@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Package Price ($)</label>
-                                    <input type="round" disabled class="form-control" name="package_price"  id="price" aria-describedby="emailHelp" required >
+                                    <input type="round" readonly class="form-control" name="package_price"  id="price" aria-describedby="emailHelp" required >
 
                                 </div>
 
