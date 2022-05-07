@@ -108,11 +108,14 @@ Route::post('admin/ambassador/update', [SettingsController::class, 'ambassador_u
 Route::post('admin/transfer-info/update', [SettingsController::class, 'transfer_info_update'])->name('transfer-info-update')->middleware('is_admin');
 Route::post('admin/withdraw-info/update', [SettingsController::class, 'withdraw_info_update'])->name('withdraw-info-update')->middleware('is_admin');
 Route::post('admin/company-info/update', [SettingsController::class, 'company_update'])->name('company-update')->middleware('is_admin');
+Route::post('admin/token_settings/update', [SettingsController::class, 'token_update'])->name('tokens-update')->middleware('is_admin');
 //all users
 Route::get('admin/user-lists', [HomeController::class, 'user_lists'])->name('admin-user-lists')->middleware('is_admin');
 
 //admin add money to user
 Route::post('admin/add-money/store', [AddMoneyController::class, 'AdminAddMoney'])->name('admin-add-money')->middleware('is_admin');
+Route::post('admin/add-money/token/store', [AddMoneyController::class, 'AdminAddMoneyToken'])->name('admin-add-money-token')->middleware('is_admin');
+Route::post('admin/add-money/bonus/store', [AddMoneyController::class, 'AdminAddMoneyBonus'])->name('admin-add-money-bonus')->middleware('is_admin');
 
 //admin package settings
 

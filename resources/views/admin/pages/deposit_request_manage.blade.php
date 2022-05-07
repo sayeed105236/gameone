@@ -19,6 +19,15 @@
                {{Session::get('Money_approved')}}
            </div>
        </div>
+       @elseif(Session::has('Money_added'))
+     <div class="alert alert-success d-flex align-items-center" role="alert">
+<svg class="bi flex-shrink-0 me-2" width="24" height="24">
+<use xlink:href="#check-circle-fill" />
+</svg>
+<div>
+{{Session::get('Money_added')}}
+</div>
+</div>
 
     @endif
 
@@ -26,8 +35,12 @@
 
                     <div class="card-body">
                         <h2 class="card-title">User's request for add fund</h2>
-                        <a class="btn btn-primary float-right" href="#" data-bs-toggle="modal" data-bs-target="#directaddfund">Direct Add Fund</a>
+                        <a class="btn btn-primary float-right" href="#" data-bs-toggle="modal" data-bs-target="#directaddfund">Add Fund (CashWallet)</a>
+                        <a class="btn btn-primary float-right" href="#" data-bs-toggle="modal" data-bs-target="#directaddfundt">Add Fund(TokenWallet)</a>
+                        <a class="btn btn-primary float-right" href="#" data-bs-toggle="modal" data-bs-target="#directaddfundb">Add Fund(BonusWallet)</a>
                         @include('admin.modals.directfundaddmodal')
+                          @include('admin.modals.directfundaddtmodal')
+                            @include('admin.modals.directfundaddbmodal')
 
                         <hr>
 
@@ -133,6 +146,60 @@
             }
             if (searchData.length < 1) $('#suggestUser').html("")
         })
+        $("body").on("keyup", "#sponsor2", function () {
+        //alert('success');
+            let searchData2 = $("#sponsor2").val();
+            if (searchData2.length > 0) {
+                $.ajax({
+                    type: 'POST',
+                    url: '{{route("get-users")}}',
+                    data: {search: searchData2},
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function (result) {
+                        $('#suggestUser2').html(result.success)
+                        console.log(result.data)
+                        // if (result.data) {
+                        //     $("#position").val("");
+                        //     $("#placement_id").val("");
+                        //     $("#position").removeAttr('disabled');
+                        // } else {
+                        //     $("#position").val("");
+                        //     $("#placement_id").val("");
+                        //     $('#position').prop('disabled', true);
+                        // }
+                    }
+                });
+            }
+            if (searchData2.length < 1) $('#suggestUser2').html("")
+        })
+        $("body").on("keyup", "#sponsor3", function () {
+        //alert('success');
+            let searchData3 = $("#sponsor3").val();
+            if (searchData3.length > 0) {
+                $.ajax({
+                    type: 'POST',
+                    url: '{{route("get-users")}}',
+                    data: {search: searchData3},
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function (result) {
+                        $('#suggestUser3').html(result.success)
+                        console.log(result.data)
+                        // if (result.data) {
+                        //     $("#position").val("");
+                        //     $("#placement_id").val("");
+                        //     $("#position").removeAttr('disabled');
+                        // } else {
+                        //     $("#position").val("");
+                        //     $("#placement_id").val("");
+                        //     $('#position').prop('disabled', true);
+                        // }
+                    }
+                });
+            }
+            if (searchData3.length < 1) $('#suggestUser3').html("")
+        })
+
+
 
 
         </script>

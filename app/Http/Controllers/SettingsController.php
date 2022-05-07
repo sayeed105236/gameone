@@ -8,8 +8,9 @@ use App\Models\Ambassador;
 use App\Models\TransferInfo;
 use App\Models\WithdrawCommission;
 use App\Models\Company;
+use App\Models\TokenS;
 use Illuminate\Support\Facades\Storage;
-
+use App\Exceptions\GeneralException;
 class SettingsController extends Controller
 {
   public function __construct()
@@ -23,8 +24,9 @@ class SettingsController extends Controller
     $transfer_info= TransferInfo::first();
     $withdraw_info= WithdrawCommission::first();
     $company= Company::first();
+    $tokens= TokenS::first();
 
-    return view('admin.pages.general_settings',compact('token_rate','ambassaor','transfer_info','withdraw_info','company'));
+    return view('admin.pages.general_settings',compact('token_rate','ambassaor','transfer_info','withdraw_info','company','tokens'));
   }
   public function token_rate_update(Request $request)
   {
@@ -52,6 +54,17 @@ class SettingsController extends Controller
     $ambassador->status=$request->status;
     $ambassador->save();
       return back()->with('ambassador_updated', 'Ambassador Successfully Updated!!');
+  }
+  public function token_update(Request $request)
+  {
+    $tokens =TokenS::find($request->id);
+    $tokens->token_name=$request->token_name;
+    $tokens->token_symbol= $request->token_symbol;
+    $tokens->total_supply= $request->total_supply;
+    $tokens->blockchain= $request->blockchain;
+
+    $tokens->save();
+      return back()->with('tokens_updated', 'Token Settings Successfully Updated!!');
   }
   public function transfer_info_update(Request $request)
   {

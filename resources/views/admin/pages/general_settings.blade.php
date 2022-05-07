@@ -55,6 +55,15 @@
           {{Session::get('withdraw_updated')}}
           </div>
           </div>
+          @elseif(Session::has('tokens_updated'))
+          <div class="alert alert-success d-flex align-items-center" role="alert">
+           <svg class="bi flex-shrink-0 me-2" width="24" height="24">
+           <use xlink:href="#check-circle-fill" />
+           </svg>
+           <div>
+           {{Session::get('tokens_updated')}}
+           </div>
+           </div>
 
 
        @endif
@@ -87,6 +96,9 @@
               <li class="nav-item" role="presentation">
                   <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#pills-ambassador1" type="button" role="tab" aria-controls="ambassador" aria-selected="false">Ambassador</button>
               </li>
+              <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#pills-tokens1" type="button" role="tab" aria-controls="tokens" aria-selected="false">Token Settings</button>
+              </li>
           </ul>
           <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade show active" id="pills-logo1" role="tabpanel"
@@ -118,7 +130,7 @@
 
                                   />
                                 </label>
-                                <input type="file" class="form-control"  name="image1"  id="company_image" aria-describedby="emailHelp" >
+                                <input type="file" value="{{asset("storage/Company/$company->company_image")}}" class="form-control"  name="image1"  id="company_image" aria-describedby="emailHelp" >
 
                             </div>
                             <div class="mb-3">
@@ -131,7 +143,7 @@
 
                                   />
                                 </label>
-                                <input type="file" class="form-control" name="image2"  id="company_icon" aria-describedby="emailHelp" >
+                                <input type="file" value="{{asset("storage/Company/$company->company_icon")}}" class="form-control" name="image2"  id="company_icon" aria-describedby="emailHelp" >
 
                             </div>
 
@@ -399,6 +411,61 @@
 
                             </select>
                               </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Update</button>
+
+                        </div>
+                          </div>
+
+                    </section>
+                      </form>
+
+              </div>
+              <div class="tab-pane fade" id="pills-tokens1" role="tabpanel"
+                  aria-labelledby="pills-info-tab1">
+                  <p>
+                      <form action="{{route('tokens-update')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$tokens->id}}">
+                    <section id="multiple-column-form">
+
+
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+
+                                    <div class="card-body">
+
+
+
+                              <div class="mb-3">
+                                  <label for="exampleInputEmail1" class="form-label">Token Name:</label>
+                                  <input type="text" class="form-control" value="{{$tokens->token_name}}" name="token_name"  id="exampleInputEmail1" aria-describedby="emailHelp" >
+
+                              </div>
+                              <div class="mb-3">
+                                  <label for="exampleInputEmail1" class="form-label">Token Symbol :</label>
+                                  <input type="text" class="form-control" value="{{$tokens->token_symbol}}" name="token_symbol"  id="exampleInputEmail1" aria-describedby="emailHelp" >
+
+                              </div>
+                              <div class="mb-3">
+                                  <label for="exampleInputEmail1" class="form-label">Total Supply :</label>
+                                  <input type="text" class="form-control" value="{{$tokens->total_supply}}" name="total_supply"  id="exampleInputEmail1" aria-describedby="emailHelp" >
+
+                              </div>
+                              <div class="mb-3">
+                                  <label for="exampleInputEmail1" class="form-label">BlockChain :</label>
+                                  <input type="text" class="form-control" value="{{$tokens->blockchain}}" name="blockchain"  id="exampleInputEmail1" aria-describedby="emailHelp" >
+
+                              </div>
+
+
+
+                            
                                     </div>
                                 </div>
                             </div>

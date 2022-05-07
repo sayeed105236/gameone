@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
 use App\Models\AddMoney;
+use App\Models\TokenWallet;
+use App\Models\BonusWallet;
 use App\Models\WithdrawCommission;
 use App\Models\Withdraw;
 use App\Models\NowPayment;
@@ -61,9 +63,9 @@ class AddMoneyController extends Controller
                 "price_currency"=> "usd",
                 //"pay_currency"=> "usdtbsc",
                   "pay_currency"=> $request['pay_currency'],
-                "ipn_callback_url"=> "https://https://cads.cryptoads.work/home/",
-                "success_url"=> "https://https://cads.cryptoads.work/home/approve_fund/".$request['amount'].'/'. $description,
-                "cancel_url"=> "https://https://cads.cryptoads.work/home",
+                "ipn_callback_url"=> "https://https://http://g1.gameum.one/home/",
+                "success_url"=> "https://https://http://g1.gameum.one/home/approve_fund/".$request['amount'].'/'. $description,
+                "cancel_url"=> "https://https://http://g1.gameum.one/home",
                 "order_id"=> $description,
                 "order_description"=> "Deposit",
 
@@ -190,6 +192,44 @@ class AddMoneyController extends Controller
       $deposit->description= 'Deposit by Admin';
       $deposit->txn_id = $description;
       $deposit->save();
-      return redirect()->route('home')->with('Money_added', 'Successfully Added Funds!!');
+      return back()->with('Money_added', 'Successfully Added Funds!!');
+    }
+    public function AdminAddMoneyToken(Request $request)
+    {
+      $receiver_id= User::where('user_name',$request->user_id)->pluck('id')->first();
+      $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      $description = substr(str_shuffle($chars), 0, 10);
+      $deposit = new TokenWallet();
+
+      $deposit->user_id =  $receiver_id;
+      $deposit->amount = $request->amount;
+      $deposit->received_from=Auth::id();
+
+      $deposit->method = 'Deposit';
+      $deposit->type = 'Credit';
+
+      $deposit->description= $request->amount .'G1 amount'.' Deposit by Admin';
+      $deposit->txn_id = $description;
+      $deposit->save();
+      return back()->with('Money_added', 'Successfully Added Funds!!');
+    }
+    public function AdminAddMoneyBonus(Request $request)
+    {
+      $receiver_id= User::where('user_name',$request->user_id)->pluck('id')->first();
+      $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      $description = substr(str_shuffle($chars), 0, 10);
+      $deposit = new BonusWallet();
+
+      $deposit->user_id =  $receiver_id;
+      $deposit->amount = $request->amount;
+      $deposit->received_from=Auth::id();
+
+      $deposit->method = 'Deposit';
+      $deposit->type = 'Credit';
+
+      $deposit->description= $request->amount .'Bonus amount'.' Deposit by Admin';
+      $deposit->txn_id = $description;
+      $deposit->save();
+      return back()->with('Money_added', 'Successfully Added Funds!!');
     }
 }

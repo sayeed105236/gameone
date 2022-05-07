@@ -527,7 +527,7 @@
                   </div>
                </div>
                <div class="card-body">
-        <a class="twitter-timeline" data-height="500" href="https://twitter.com/cadstoken?ref_src=twsrc%5Etfw">Tweets by cadstoken</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="500" href="https://twitter.com/GameumG1?ref_src=twsrc%5Etfw">Tweets by GameumG1</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 
