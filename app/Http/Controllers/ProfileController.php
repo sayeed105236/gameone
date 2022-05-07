@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Exceptions\GeneralException;
 
 class ProfileController extends Controller
 {

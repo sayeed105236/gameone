@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PackageSettings;
 use Illuminate\Support\Facades\Storage;
+use App\Exceptions\GeneralException;
 
 class PackageController extends Controller
 {
@@ -99,7 +100,7 @@ class PackageController extends Controller
     $package = PackageSettings::find($id);
 
     $package->delete();
-    
+
     return back()->with('package_deleted', 'Package Successfully Deleted!!');
 
   }
