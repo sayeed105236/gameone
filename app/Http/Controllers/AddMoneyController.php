@@ -63,9 +63,9 @@ class AddMoneyController extends Controller
                 "price_currency"=> "usd",
                 //"pay_currency"=> "usdtbsc",
                   "pay_currency"=> $request['pay_currency'],
-                "ipn_callback_url"=> "https://https://http://g1.gameum.one/home/",
-                "success_url"=> "https://https://http://g1.gameum.one/home/approve_fund/".$request['amount'].'/'. $description,
-                "cancel_url"=> "https://https://http://g1.gameum.one/home",
+                "ipn_callback_url"=> "https://g1.gameum.one/home/",
+                "success_url"=> "https://g1.gameum.one/home/approve_fund/".$request['amount'].'/'. $description,
+                "cancel_url"=> "https://g1.gameum.one/home",
                 "order_id"=> $description,
                 "order_description"=> "Deposit",
 

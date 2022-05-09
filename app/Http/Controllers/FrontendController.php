@@ -46,11 +46,14 @@ class FrontendController extends Controller
   }
   public function store_package(Request $request)
   {
+    $data['sum_deposit']=AddMoney::where('user_id',Auth::id())->sum('amount');
+    $package_id= PackageSettings::where('id',$request->package_id)->first();
+    $sponsor=User::where('id',$request->user_id)->first();
 
-      $package_id= PackageSettings::where('id',$request->package_id)->first();
-      $sponsor=User::where('id',$request->user_id)->first();
-      //dd($sponsor->sponsor);
-      //dd($package_id->package_price);
+    if($data['sum_deposit'] < $package_id->package_price)
+    {
+        return back()->with('transfer_error', 'Insufficent Balance');
+    }else{
       $purchase= new Purchase();
       $purchase->user_id= $request->user_id;
       $purchase->package_id= $request->package_id;
@@ -85,6 +88,12 @@ class FrontendController extends Controller
       $bonus->description= ($package_id->amount)*(($package_id->affilate_token)/100). ' G1 Token ' . 'Affiliate Bonus from'. ' ' . Auth::user()->user_name;
       $bonus->save();
       return back()->with('package_purchase', 'Package Successfully Purchased!!');
+    }
+
+
+      //dd($sponsor->sponsor);
+      //dd($package_id->package_price);
+
   }
   public function my_asset($id)
   {
@@ -149,7 +158,7 @@ class FrontendController extends Controller
     //dd($token->refer_purchase_commission);
     $data['sum_deposit']=AddMoney::where('user_id',Auth::id())->sum('amount');
 
-    if($data['sum_deposit'] < $request->amount)
+    if($data['sum_deposit'] < $request->payable)
     {
         return back()->with('balance_error', 'Insufficent Balance');
     }else {
